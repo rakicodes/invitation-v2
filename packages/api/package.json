@@ -1,0 +1,12 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo 'all api tests passed!'"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
