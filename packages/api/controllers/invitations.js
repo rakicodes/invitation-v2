@@ -76,8 +76,59 @@ const createInvitation = asyncHandler(async (req, res) => {
   }
 });
 
+/**
+ ** @desc    edit invitation
+ ** @route   PUT /api/invitations
+ ** @access  Private
+ */
+const editInvitation = asyncHandler(async (req, res) => {
+  try {
+    const {
+      message,
+      messageImage,
+      successMessage,
+      successImage,
+      failedMessage,
+      failedImage,
+      recepient,
+      isPublic,
+      backgroundColor,
+      fontColor,
+      buttonBackgroundColor,
+      buttonFontColor,
+      response,
+    } = req.body;
+
+    const invitation = await Invitation.findByIdAndUpdate(
+      { _id: req.params.id },
+      {
+        message,
+        messageImage,
+        successMessage,
+        successImage,
+        failedMessage,
+        failedImage,
+        recepient,
+        isPublic,
+        backgroundColor,
+        fontColor,
+        buttonBackgroundColor,
+        buttonFontColor,
+        response,
+      },
+    );
+
+    res.status(201).json(invitation);
+  } catch (error) {
+    res
+      .status(404)
+      .json("Sorry something went wrong. Couldn't edit invitation");
+  }
+});
+
 module.exports = {
   getInvitations,
   getInvitation,
   createInvitation,
+  editInvitation,
 };
