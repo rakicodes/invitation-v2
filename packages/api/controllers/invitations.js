@@ -51,6 +51,7 @@ const createInvitation = asyncHandler(async (req, res) => {
       fontColor,
       buttonBackgroundColor,
       buttonFontColor,
+      responseEffect
     } = req.body;
 
     const invitation = Invitation.create({
@@ -67,6 +68,7 @@ const createInvitation = asyncHandler(async (req, res) => {
       buttonBackgroundColor: buttonBackgroundColor,
       buttonFontColor: buttonFontColor,
       response: "awaiting",
+      responseEffect: responseEffect,
     });
     res.status(201).json(invitation);
   } catch (error) {
@@ -97,6 +99,7 @@ const editInvitation = asyncHandler(async (req, res) => {
       buttonBackgroundColor,
       buttonFontColor,
       response,
+      responseEffect
     } = req.body;
 
     const invitation = await Invitation.findByIdAndUpdate(
@@ -115,6 +118,7 @@ const editInvitation = asyncHandler(async (req, res) => {
         buttonBackgroundColor,
         buttonFontColor,
         response,
+        responseEffect
       },
     );
 
@@ -126,9 +130,45 @@ const editInvitation = asyncHandler(async (req, res) => {
   }
 });
 
+/**
+ ** @desc    delete invitation by id
+ ** @route   DELETE /api/invitations/:id
+ ** @access  Private
+ */
+const deleteInvitation = asyncHandler(async (req, res) => {
+  try {
+    await Invitation.deleteOne({ _id: req.params.id });
+
+    res.status(200).json(req.params.id);
+  } catch (error) {
+    res
+      .status(404)
+      .json("Sorry something went wrong. Couldn't delete invitation");
+  }
+});
+
+/**
+ ** @desc    delete all invitations
+ ** @route   DELETE /api/invitations
+ ** @access  Private
+ */
+ const deleteAllInvitations = asyncHandler(async (req, res) => {
+    try {
+      await Invitation.deleteMany({});
+      res.status(200).json("Invitations deleted");
+    } catch (error) {
+      res
+        .status(404)
+        .json("Sorry something went wrong. Couldn't delete invitations");
+    }
+  });
+
+  
 module.exports = {
   getInvitations,
   getInvitation,
   createInvitation,
   editInvitation,
+  deleteInvitation,
+  deleteAllInvitations
 };

@@ -38,6 +38,10 @@ const Invitation = mongoose.Schema(
       type: String,
       required: true,
     },
+    responseEffect: {
+      type: Boolean,
+      required: true,
+    },
     isPublic: {
       type: Boolean,
       required: true,
