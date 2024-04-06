@@ -54,19 +54,19 @@ const createInvitation = asyncHandler(async (req, res) => {
     } = req.body;
 
     const invitation = Invitation.create({
-        message: message,
-        messageImage: messageImage,
-        successMessage: successMessage,
-        successImage: successImage,
-        failedMessage: failedMessage,
-        failedImage: failedImage,
-        recepient: recepient,
-        isPublic: isPublic,
-        backgroundColor: backgroundColor,
-        fontColor: fontColor,
-        buttonBackgroundColor: buttonBackgroundColor,
-        buttonFontColor: buttonFontColor,
-        response: "awaiting",
+      message: message,
+      messageImage: messageImage,
+      successMessage: successMessage,
+      successImage: successImage,
+      failedMessage: failedMessage,
+      failedImage: failedImage,
+      recepient: recepient,
+      isPublic: isPublic,
+      backgroundColor: backgroundColor,
+      fontColor: fontColor,
+      buttonBackgroundColor: buttonBackgroundColor,
+      buttonFontColor: buttonFontColor,
+      response: "awaiting",
     });
     res.status(201).json(invitation);
   } catch (error) {
