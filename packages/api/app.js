@@ -1,8 +1,12 @@
 const express = require("express");
 const dotenv = require("dotenv").config();
 const cors = require("cors");
+const connectDB = require("./config/db");
 const app = express();
-const port = process.env.PORT || 3333;
+
+const invitationsRoutes = require("./routes/invitations");
+
+connectDB();
 
 app.use(cors());
 
@@ -13,6 +17,6 @@ app.get("/", (req, res) => {
   res.send("Hello World to the Invitation API!");
 });
 
-app.listen(port, () => {
-  console.log(`Invitation API listening on port ${port}`);
-});
+app.use("/api/invitations", invitationsRoutes);
+
+module.exports = app;
