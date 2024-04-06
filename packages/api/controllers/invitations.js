@@ -51,7 +51,7 @@ const createInvitation = asyncHandler(async (req, res) => {
       fontColor,
       buttonBackgroundColor,
       buttonFontColor,
-      responseEffect
+      responseEffect,
     } = req.body;
 
     const invitation = Invitation.create({
@@ -99,7 +99,7 @@ const editInvitation = asyncHandler(async (req, res) => {
       buttonBackgroundColor,
       buttonFontColor,
       response,
-      responseEffect
+      responseEffect,
     } = req.body;
 
     const invitation = await Invitation.findByIdAndUpdate(
@@ -118,7 +118,7 @@ const editInvitation = asyncHandler(async (req, res) => {
         buttonBackgroundColor,
         buttonFontColor,
         response,
-        responseEffect
+        responseEffect,
       },
     );
 
@@ -152,23 +152,22 @@ const deleteInvitation = asyncHandler(async (req, res) => {
  ** @route   DELETE /api/invitations
  ** @access  Private
  */
- const deleteAllInvitations = asyncHandler(async (req, res) => {
-    try {
-      await Invitation.deleteMany({});
-      res.status(200).json("Invitations deleted");
-    } catch (error) {
-      res
-        .status(404)
-        .json("Sorry something went wrong. Couldn't delete invitations");
-    }
-  });
+const deleteAllInvitations = asyncHandler(async (req, res) => {
+  try {
+    await Invitation.deleteMany({});
+    res.status(200).json("Invitations deleted");
+  } catch (error) {
+    res
+      .status(404)
+      .json("Sorry something went wrong. Couldn't delete invitations");
+  }
+});
 
-  
 module.exports = {
   getInvitations,
   getInvitation,
   createInvitation,
   editInvitation,
   deleteInvitation,
-  deleteAllInvitations
+  deleteAllInvitations,
 };
