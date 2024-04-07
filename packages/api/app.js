@@ -5,6 +5,7 @@ const connectDB = require("./config/db");
 const app = express();
 
 const invitationsRoutes = require("./routes/invitations");
+const authRoutes = require("./routes/auth");
 
 connectDB();
 
@@ -18,5 +19,6 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/invitations", invitationsRoutes);
+app.use("/api/auth", authRoutes);
 
 module.exports = app;
