@@ -14,7 +14,7 @@ describe("Users API", () => {
     await request(app).post("/api/auth/register").send(initialUserTestData);
 
     const response = await request(app).get("/api/auth");
-    id = response.body[0]._id
+    id = response.body[0]._id;
   }, 10000);
   afterAll(async () => {
     await request(app).delete("/api/auth");

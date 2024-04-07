@@ -113,12 +113,11 @@ const getUser = asyncHandler(async (req, res) => {
  ** @route   GET /api/auth
  ** @access  Public
  */
- const getUsers = asyncHandler(async (req, res) => {
+const getUsers = asyncHandler(async (req, res) => {
   try {
     const users = await User.find();
 
     res.status(200).json(users);
-
   } catch (error) {
     res.status(400).json("Sorry something went wrong. Users not found");
   }
