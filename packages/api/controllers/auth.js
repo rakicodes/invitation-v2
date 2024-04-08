@@ -41,7 +41,7 @@ const login = asyncHandler(async (req, res) => {
  */
 const register = asyncHandler(async (req, res) => {
   try {
-    const { name, email, password } = req.body;
+    const { name, email, password, role } = req.body;
 
     if (!name || !email || !password) {
       res.status(400).json("Please add all fields");
@@ -73,6 +73,7 @@ const register = asyncHandler(async (req, res) => {
       name,
       email,
       password: hashPassword,
+      role: role ? role : "user"
     });
 
     if (user) {
@@ -80,6 +81,7 @@ const register = asyncHandler(async (req, res) => {
         _id: user.id,
         name: user.name,
         email: user.email,
+        role: user.role,
         token: generateToken(user._id),
       });
     } else {
@@ -124,11 +126,17 @@ const getUsers = asyncHandler(async (req, res) => {
 });
 /**
  ** @desc    deletes all users
- ** @route   DELETES /api/auth
- ** @access  Public TODO: should be private
+ ** @route   DELETE /api/auth
+ ** @access  Private
+ ** @role    Admin
  */
 const deletesAllUsers = asyncHandler(async (req, res) => {
   try {
+    if (!req.user || req.user.role !== "admin") {
+			res.status(401).json("Sorry permission denied");
+			return;
+		}
+
     await User.deleteMany({});
 
     res.status(200).json("Users deleted");

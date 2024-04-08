@@ -6,19 +6,34 @@ const {
   userLoginWrongEmailTestData,
   userLoginWrongPasswordTestData,
   initialUserTestData,
+  adminRegisterTestData,
+  adminLoginTestData,
+  initialLoginTestData,
 } = require("./user.data");
 
 describe("Users API", () => {
   let id;
+  let token;
+  let adminToken;
   beforeAll(async () => {
-    await request(app).post("/api/auth/register").send(initialUserTestData);
+    await request(app).post("/api/auth/register").send(initialUserTestData).expect(201);
+    const initialUser = await request(app).post("/api/auth/login").send(initialLoginTestData).expect(200);
+    token = initialUser.body.token
+
+    await request(app).post("/api/auth/register").send(adminRegisterTestData).expect(201);
+    const adminUser = await request(app).post("/api/auth/login").send(adminLoginTestData).expect(200);
+    adminToken = adminUser.body.token
 
     const response = await request(app).get("/api/auth");
     id = response.body[0]._id;
   }, 10000);
   afterAll(async () => {
-    await request(app).delete("/api/auth");
-  }, 10000);
+    await request(app).post("/api/auth/register").send(adminRegisterTestData).expect(201);
+    const adminUser = await request(app).post("/api/auth/login").send(adminLoginTestData).expect(200);
+    adminToken = adminUser.body.token
+
+    const del = await request(app).delete("/api/auth").set('Authorization',  `Bearer ${adminToken}`).expect(200);
+  });
   describe("addUser", () => {
     it("POST /api/auth/register --> should add new user", () => {
       return request(app)
@@ -45,8 +60,8 @@ describe("Users API", () => {
   });
 
   describe("getUser", () => {
-    it("GET /api/auth/id --> should return the correct user if found", () => {
-      return request(app)
+    it("GET /api/auth/id --> should return the correct user if found", async () => {
+      return await request(app)
         .get(`/api/auth/${id}`)
         .expect("Content-Type", /json/)
         .expect(200)
@@ -85,4 +100,13 @@ describe("Users API", () => {
         .expect(401);
     });
   });
+
+  describe("deleteUsers", () => {
+    it("DELETE /api/auth --> should delete all invitations", () => {
+      return request(app).delete(`/api/auth`).set('Authorization',  `Bearer ${adminToken}`).expect(200);
+    });
+    it("DELETE /api/auth --> should throw an error if user is not authorized to delete invitations", () => {
+      return request(app).delete("/api/auth").set('Authorization',  `Bearer ${token}}`).expect("Content-Type", /json/).expect(401)
+    });
+  })
 });

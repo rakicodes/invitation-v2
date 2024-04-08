@@ -3,6 +3,10 @@ const initialUserTestData = {
   password: "test123",
   name: "Test",
 };
+const initialLoginTestData = {
+  email: "initialTest@test.com",
+  password: "test123",
+};
 const userRegisterTestData = {
   email: "test@test.com",
   password: "test123",
@@ -24,10 +28,25 @@ const userLoginWrongPasswordTestData = {
   password: "test1234",
 };
 
+const adminRegisterTestData = {
+  email: "admin@test.com",
+  password: "test123",
+  name: "Test",
+  role: "admin"
+};
+
+const adminLoginTestData = {
+  email: "admin@test.com",
+  password: "test123",
+};
+
 module.exports = {
   initialUserTestData,
+  initialLoginTestData,
   userRegisterTestData,
   userLoginTestData,
   userLoginWrongEmailTestData,
   userLoginWrongPasswordTestData,
+  adminRegisterTestData,
+  adminLoginTestData
 };

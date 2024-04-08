@@ -137,6 +137,18 @@ const unauthorizedUserLoginTestData = {
   password: "test123",
 };
 
+const adminRegisterTestData = {
+  email: "admin@test.com",
+  password: "test123",
+  name: "Test",
+  role: "admin"
+};
+
+const adminLoginTestData = {
+  email: "admin@test.com",
+  password: "test123",
+};
+
 module.exports = {
   invitationAddTestData,
   publicInvitationAddTestData,
@@ -147,5 +159,7 @@ module.exports = {
   invitationRegisterTestData,
   invitationLoginTestData,
   unauthorizedUserRegisterTestData,
-  unauthorizedUserLoginTestData
+  unauthorizedUserLoginTestData,
+  adminRegisterTestData,
+  adminLoginTestData
 };
