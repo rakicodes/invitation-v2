@@ -32,7 +32,7 @@ const adminRegisterTestData = {
   email: "admin@test.com",
   password: "test123",
   name: "Test",
-  role: "admin"
+  role: "admin",
 };
 
 const adminLoginTestData = {
@@ -48,5 +48,5 @@ module.exports = {
   userLoginWrongEmailTestData,
   userLoginWrongPasswordTestData,
   adminRegisterTestData,
-  adminLoginTestData
+  adminLoginTestData,
 };

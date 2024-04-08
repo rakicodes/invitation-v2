@@ -24,8 +24,6 @@ const protect = asyncHandler(async (req, res, next) => {
       res.status(401).json("Not authorized");
     }
   }
-
-
 });
 
 module.exports = {

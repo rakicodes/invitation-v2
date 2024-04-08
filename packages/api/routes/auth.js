@@ -7,7 +7,7 @@ const {
   deletesAllUsers,
   getUsers,
 } = require("../controllers/auth");
-const { protect } = require("../middleware/auth")
+const { protect } = require("../middleware/auth");
 
 router.get("/:id", getUser);
 router.get("/", getUsers);

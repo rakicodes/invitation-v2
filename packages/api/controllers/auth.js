@@ -73,7 +73,7 @@ const register = asyncHandler(async (req, res) => {
       name,
       email,
       password: hashPassword,
-      role: role ? role : "user"
+      role: role ? role : "user",
     });
 
     if (user) {
@@ -133,9 +133,9 @@ const getUsers = asyncHandler(async (req, res) => {
 const deletesAllUsers = asyncHandler(async (req, res) => {
   try {
     if (!req.user || req.user.role !== "admin") {
-			res.status(401).json("Sorry permission denied");
-			return;
-		}
+      res.status(401).json("Sorry permission denied");
+      return;
+    }
 
     await User.deleteMany({});
 
