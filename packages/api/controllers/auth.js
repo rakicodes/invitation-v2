@@ -105,7 +105,7 @@ const getUser = asyncHandler(async (req, res) => {
       res.status(400).json("Sorry user does not exist");
     }
   } catch (error) {
-    res.status(400).json("Sorry user does not exist");
+    res.status(404).json("Sorry user does not exist");
   }
 });
 /**

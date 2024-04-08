@@ -61,7 +61,7 @@ describe("Users API", () => {
         });
     });
     it("GET /api/auth/id --> should return 404 status code if user is not found", () => {
-      return request(app).get("/api/invitations/9999999").expect(404);
+      return request(app).get("/api/auth/9999999").expect(404);
     });
   });
 

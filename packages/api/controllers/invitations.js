@@ -4,7 +4,7 @@ const Invitation = require("../models/Invitation");
 /**
  ** @desc    get all invitations
  ** @route   GET /api/invitations
- ** @access  Public
+ ** @access  Public TODO - admin
  */
 const getInvitations = asyncHandler(async (req, res) => {
   try {
@@ -20,12 +20,22 @@ const getInvitations = asyncHandler(async (req, res) => {
 /**
  ** @desc    get invitation by id
  ** @route   GET /api/invitations/:id
- ** @access  Public or Private
+ ** @access  Private TODO - isPublic
  */
 const getInvitation = asyncHandler(async (req, res) => {
   try {
     const invitation = await Invitation.findById(req.params.id);
-    res.status(200).json(invitation);
+    if (!invitation) {
+      res.status(404).json("Sorry something went wrong. Couldn't get invitation");
+      return
+    }
+
+    const { isPublic, user } = invitation;
+    if (isPublic || user.toString() === req.user.id) {
+      res.status(200).json(invitation);
+    } else {
+      res.status(401).json("Sorry can't access invitation")
+    }
   } catch (error) {
     res.status(404).json("Sorry something went wrong. Couldn't get invitation");
   }
@@ -54,7 +64,23 @@ const createInvitation = asyncHandler(async (req, res) => {
       responseEffect,
     } = req.body;
 
-    const invitation = Invitation.create({
+    if (!req.user) {
+      res.status(401).json("Unauthorized. You are not logged in.")
+      return
+    }
+
+    if (!message || !successMessage || !failedMessage) {
+      res.status(400).json("Please make sure you filled out all messages")
+      return
+    } 
+
+    if (!messageImage || !successImage || !failedImage) {
+      res.status(400).json("Please make sure all 3 images are provided")
+      return
+    }
+
+    const invitation = await Invitation.create({
+      user: req.user.id,
       message: message,
       messageImage: messageImage,
       successMessage: successMessage,
@@ -85,7 +111,14 @@ const createInvitation = asyncHandler(async (req, res) => {
  */
 const editInvitation = asyncHandler(async (req, res) => {
   try {
+    const invitation = await Invitation.findById(req.params.id)
+    if (!invitation) {
+      res.status(404).json("Sorry something went wrong. Couldn't get invitation");
+      return
+    }
+
     const {
+      user,
       message,
       messageImage,
       successMessage,
@@ -102,7 +135,22 @@ const editInvitation = asyncHandler(async (req, res) => {
       responseEffect,
     } = req.body;
 
-    const invitation = await Invitation.findByIdAndUpdate(
+    if (!req.user && user.toString() !== req.user.id) {
+      res.status(401).json("Unauthorized. You cannot edit this invitation.")
+      return
+    }
+
+    if (!message || !successMessage || !failedMessage) {
+      res.status(400).json("Please make sure you filled out all messages")
+      return
+    } 
+
+    if (!messageImage || !successImage || !failedImage) {
+      res.status(400).json("Please make sure all 3 images are provided")
+      return
+    }
+
+    const invitationEdit = await Invitation.updateOne(
       { _id: req.params.id },
       {
         message,
@@ -122,7 +170,7 @@ const editInvitation = asyncHandler(async (req, res) => {
       },
     );
 
-    res.status(201).json(invitation);
+    res.status(201).json(invitationEdit);
   } catch (error) {
     res
       .status(404)
@@ -137,9 +185,20 @@ const editInvitation = asyncHandler(async (req, res) => {
  */
 const deleteInvitation = asyncHandler(async (req, res) => {
   try {
-    await Invitation.deleteOne({ _id: req.params.id });
+    const invitation = await Invitation.findById(req.params.id)
+    if (!invitation) {
+      res.status(404).json("Sorry something went wrong. Couldn't get invitation");
+      return
+    }
+    
+    if (!req.user || invitation.user.toString() !== req.user.id) {
+      res.status(401).json("Unauthorized. You cannot delete this invitation.")
+      return
+    }
 
+    await Invitation.deleteOne({ _id: req.params.id });
     res.status(200).json(req.params.id);
+
   } catch (error) {
     res
       .status(404)
@@ -150,7 +209,7 @@ const deleteInvitation = asyncHandler(async (req, res) => {
 /**
  ** @desc    delete all invitations
  ** @route   DELETE /api/invitations
- ** @access  Private
+ ** @access  Private TODO : only admin can use this
  */
 const deleteAllInvitations = asyncHandler(async (req, res) => {
   try {
