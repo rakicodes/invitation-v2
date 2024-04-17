@@ -1,8 +1,11 @@
 import React from 'react'
+import SignUpTemplate from '@ui/templates/SignUpTemplate'
 
 const page = () => {
   return (
-    <div>signup</div>
+    <>
+      <SignUpTemplate />
+    </>
   )
 }
 
