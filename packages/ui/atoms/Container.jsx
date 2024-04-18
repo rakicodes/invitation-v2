@@ -1,11 +1,13 @@
 const Container = ({ backgroundColor, children }) => {
   return (
-    <div style={{
-        backgroundColor: backgroundColor
-    }}>
-        {children}
+    <div
+      style={{
+        backgroundColor: backgroundColor,
+      }}
+    >
+      {children}
     </div>
-  )
-}
+  );
+};
 
-export default Container
+export default Container;

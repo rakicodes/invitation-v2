@@ -1,9 +1,17 @@
-import SignUpForm from "../organisms/SignUpForm"
+import SignUpForm from "../organisms/SignUpForm";
 
-const SignUpTemplate = ({ name, email, password, handleChangeName, handleChangeEmail, handleChangePassword, handleSubmit }) => {
+const SignUpTemplate = ({
+  name,
+  email,
+  password,
+  handleChangeName,
+  handleChangeEmail,
+  handleChangePassword,
+  handleSubmit,
+}) => {
   return (
     <>
-      <SignUpForm 
+      <SignUpForm
         name={name}
         email={email}
         password={password}
@@ -12,8 +20,8 @@ const SignUpTemplate = ({ name, email, password, handleChangeName, handleChangeE
         handleChangePassword={handleChangePassword}
         handleSubmit={handleSubmit}
       />
-    </> 
-  )
-}
+    </>
+  );
+};
 
-export default SignUpTemplate
+export default SignUpTemplate;

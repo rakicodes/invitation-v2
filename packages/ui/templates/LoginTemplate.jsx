@@ -1,9 +1,15 @@
-import LoginForm from "../organisms/LoginForm"
+import LoginForm from "../organisms/LoginForm";
 
-const LoginTemplate = ({ email, password, handleChangeEmail, handleChangePassword, handleSubmit }) => {
+const LoginTemplate = ({
+  email,
+  password,
+  handleChangeEmail,
+  handleChangePassword,
+  handleSubmit,
+}) => {
   return (
     <>
-      <LoginForm 
+      <LoginForm
         email={email}
         password={password}
         handleChangeEmail={handleChangeEmail}
@@ -11,7 +17,7 @@ const LoginTemplate = ({ email, password, handleChangeEmail, handleChangePasswor
         handleSubmit={handleSubmit}
       />
     </>
-  )
-}
+  );
+};
 
-export default LoginTemplate
+export default LoginTemplate;

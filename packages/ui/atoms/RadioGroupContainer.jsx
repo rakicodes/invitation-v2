@@ -1,9 +1,5 @@
 const RadioGroupContainer = ({ children, onChange }) => {
-  return (
-    <div onChange={onChange}>
-        {children}
-    </div>
-  )
-}
+  return <div onChange={onChange}>{children}</div>;
+};
 
-export default RadioGroupContainer
+export default RadioGroupContainer;

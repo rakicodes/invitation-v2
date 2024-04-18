@@ -4,12 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo 'all ui tests passed!'"
+    "test": "echo 'all ui tests passed!'",
+    "format": "prettier --write \"./**/*.{js,jsx,json}\""
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "prettier": "^3.2.5",
     "tailwindcss": "^3.4.3"
   }
 }

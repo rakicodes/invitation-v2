@@ -1,7 +1,13 @@
-const ColorInput = ({  name, required, value, onChange }) => {
+const ColorInput = ({ name, required, value, onChange }) => {
   return (
-    <input type="color" name={name} required={required} value={value} onChange={onChange}/>
-  )
-}
+    <input
+      type="color"
+      name={name}
+      required={required}
+      value={value}
+      onChange={onChange}
+    />
+  );
+};
 
-export default ColorInput
+export default ColorInput;
