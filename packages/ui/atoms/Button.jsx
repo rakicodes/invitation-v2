@@ -1,7 +1,24 @@
-const Button = ({ type="button", onClick, children }) => {
-  return (
-    <button type={type} onClick={onClick}>{children}</button>
-  )
-}
+"use client"
 
-export default Button
+const Button = ({
+	type = "button",
+	onClick,
+	children,
+	fontColor = "#fff9fb",
+	backgroundColor = "#b25674",
+}) => {
+
+	return (
+		<button
+			type={type}
+			onClick={onClick}
+			style={{
+        color: fontColor,
+        backgroundColor: backgroundColor
+      }}>
+			{children}
+		</button>
+	);
+};
+
+export default Button;
