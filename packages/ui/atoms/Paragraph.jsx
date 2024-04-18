@@ -1,5 +1,5 @@
 const Paragraph = ({ fontColor, children }) => {
-  return <p className={`text-[${fontColor}]`}>{children}</p>;
+  return <p style={{ color: fontColor }}>{children}</p>;
 };
 
 export default Paragraph;
