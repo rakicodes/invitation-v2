@@ -1,6 +1,6 @@
-const Paragraph = ({ fontColor, children }) => {
+const Paragraph = ({ fontColor, textCenter, children }) => {
   return (
-    <p className="w-full" style={{ color: fontColor }}>
+    <p className={textCenter ? "w-full text-center" : "w-full"} style={{ color: fontColor }}>
       {children}
     </p>
   );
