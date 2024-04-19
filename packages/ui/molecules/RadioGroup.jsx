@@ -1,5 +1,5 @@
 import Typography from "../atoms/Typography";
-import RadioGroupContainer from "../atoms/RadioGroupContainer";
+import RadioGroupContainer from "../templates/container/RadioGroupContainer";
 import RadioInputWithLabel from "./RadioInputWithLabel";
 
 const RadioGroup = ({ title, radios, onChange, selected }) => {

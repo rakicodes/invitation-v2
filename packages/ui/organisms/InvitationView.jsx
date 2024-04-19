@@ -1,7 +1,7 @@
 import Image from "../atoms/Image";
 import Typography from "../atoms/Typography";
 import ButtonGroup from "../molecules/ButtonGroup";
-import Container from "../atoms/Container";
+import InvitationContainer from "../templates/container/InvitationContainer";
 
 const InvitationView = ({
   message,
@@ -15,7 +15,7 @@ const InvitationView = ({
   screen
 }) => {
   return (
-    <Container backgroundColor={backgroundColor} screen={screen}>
+    <InvitationContainer backgroundColor={backgroundColor} screen={screen}>
       <Typography fontColor={fontColor} textCenter={true}>{message}</Typography>
       <Image url={imgUrl} alt={imgAlt} />
       <ButtonGroup
@@ -24,7 +24,7 @@ const InvitationView = ({
         fontColor={buttonFontColor}
         fullWidth={false}
       />
-    </Container>
+    </InvitationContainer>
   );
 };
 

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import SignUpForm from "../organisms/SignUpForm";
-import FormContainer from "../atoms/FormContainer";
+import FormContainer from "./container/FormContainer";
 import Typography from "../atoms/Typography";
 import CenterCardContainer from "./container/CenterCardContainer"
 
