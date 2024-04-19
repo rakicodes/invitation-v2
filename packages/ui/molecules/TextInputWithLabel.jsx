@@ -8,6 +8,7 @@ const TextInputWithLabel = ({
   required,
   value,
   onChange,
+  placeholder
 }) => {
   return (
     <div className="flex flex-col w-full">
@@ -18,6 +19,7 @@ const TextInputWithLabel = ({
         required={required}
         value={value}
         onChange={onChange}
+        placeholder={placeholder}
       />
     </div>
   );

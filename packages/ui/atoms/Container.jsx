@@ -1,7 +1,7 @@
-const Container = ({ backgroundColor, children }) => {
+const Container = ({ backgroundColor, children, screen }) => {
   return (
     <div
-      className="flex flex-col justify-center items-center p-2 min-h-screen"
+      className={screen ? "flex flex-col justify-center items-center p-2 min-h-screen" : "flex flex-col justify-center items-center p-2"}
       style={{
         backgroundColor: backgroundColor,
       }}

@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import CreateInvitationTemplate from '@ui/templates/CreateInvitationTemplate'
 import responseEffects from './responseEffect'
 import visibilityInvitation from './visibilityInvitation'
+import sampleInvitation from './sampleInvitation'
 
 const Page = () => {
   const [message, setMessage] = useState("")
@@ -15,10 +16,10 @@ const Page = () => {
   const [recipient, setRecipient] = useState("")
   const [responseEffect, setResponseEffect] = useState("NO_EFFECT")
   const [isPublic, setIsPublic] = useState("PRIVATE")
-  const [backgroundColor, setBackgroundColor] = useState("")
-  const [fontColor, setFontColor] = useState("")
-  const [buttonBackgroundColor, setButtonBackgroundColor] = useState("")
-  const [buttonFontColor, setButtonFontColor] = useState("")
+  const [backgroundColor, setBackgroundColor] = useState(sampleInvitation.backgroundColor)
+  const [fontColor, setFontColor] = useState(sampleInvitation.fontColor)
+  const [buttonBackgroundColor, setButtonBackgroundColor] = useState(sampleInvitation.buttonBackgroundColor)
+  const [buttonFontColor, setButtonFontColor] = useState(sampleInvitation.buttonFontColor)
 
   return (
     <>
@@ -52,6 +53,7 @@ const Page = () => {
         handleChangeButtonBackgroundColor={(e) => setButtonBackgroundColor(e.target.value)}
         handleChangeButtonFontColor={(e) => setButtonFontColor(e.target.value)}
         handleSubmit={() => console.log("Creating invitation....")}
+        preview={sampleInvitation}
       />
     </>
   )

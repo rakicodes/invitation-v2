@@ -2,7 +2,6 @@ import Button from "../atoms/Button";
 import TextInputWithLabel from "../molecules/TextInputWithLabel";
 import ColorInputWithLabel from "../molecules/ColorInputWithLabel";
 import RadioGroup from "../molecules/RadioGroup";
-import FormContainer from "../atoms/FormContainer";
 
 const CreateInvitationForm = ({
   message,
@@ -34,9 +33,10 @@ const CreateInvitationForm = ({
   handleChangeButtonBackgroundColor,
   handleChangeButtonFontColor,
   handleSubmit,
+  preview
 }) => {
   return (
-    <FormContainer>
+    <>
       <TextInputWithLabel
         type="text"
         label="Message"
@@ -44,6 +44,7 @@ const CreateInvitationForm = ({
         required={true}
         value={message}
         onChange={handleChangeMessage}
+        placeholder={preview.message}
       />
       <TextInputWithLabel
         type="text"
@@ -52,6 +53,7 @@ const CreateInvitationForm = ({
         required={true}
         value={image}
         onChange={handleChangeImage}
+        placeholder={preview.messageImage}
       />
       <TextInputWithLabel
         type="text"
@@ -60,6 +62,7 @@ const CreateInvitationForm = ({
         required={true}
         value={successMessage}
         onChange={handleChangeSuccessMessage}
+        placeholder={preview.successMessage}
       />
       <TextInputWithLabel
         type="text"
@@ -68,6 +71,7 @@ const CreateInvitationForm = ({
         required={true}
         value={successImage}
         onChange={handleChangeSuccessImage}
+        placeholder={preview.successImage}
       />
       <TextInputWithLabel
         type="text"
@@ -76,6 +80,7 @@ const CreateInvitationForm = ({
         required={true}
         value={failedMessage}
         onChange={handleChangeFailedMessage}
+        placeholder={preview.failedMessage}
       />
       <TextInputWithLabel
         type="text"
@@ -84,6 +89,7 @@ const CreateInvitationForm = ({
         required={true}
         value={failedImage}
         onChange={handleChangeFailedImage}
+        placeholder={preview.failedImage}
       />
       <TextInputWithLabel
         type="text"
@@ -92,6 +98,7 @@ const CreateInvitationForm = ({
         required={true}
         value={recipient}
         onChange={handleChangeRecipient}
+        placeholder={preview.recepient}
       />
       <div className="flex flex-wrap gap-2 w-full">
         <ColorInputWithLabel
@@ -143,7 +150,7 @@ const CreateInvitationForm = ({
       <Button type="submit" onClick={handleSubmit}>
         Create Invitation
       </Button>
-    </FormContainer>
+    </>
   );
 };
 

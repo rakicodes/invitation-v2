@@ -11,7 +11,7 @@ const InvitationTemplate = ({
   buttonFontColor,
 }) => {
   return (
-    <>
+    <div className="min-h-screen">
       <InvitationView
         message={message}
         imgUrl={imgUrl}
@@ -21,8 +21,9 @@ const InvitationTemplate = ({
         fontColor={fontColor}
         buttonBackgroundColor={buttonBackgroundColor}
         buttonFontColor={buttonFontColor}
+        screen={true}
       />
-    </>
+    </div>
   );
 };
 
