@@ -76,7 +76,7 @@ const CreateInvitationTemplate = ({
         />
       </div>
 			<div className="flex w-full grow self-baseline sm:w-1/3">
-        <div className="flex flex-wrap gap-2 sm:fixed">
+        <div className="flex flex-wrap gap-2 sm:pr-2 sm:fixed">
         <div className="w-full">
           <Typography element="h3">Message Preview</Typography>
 
