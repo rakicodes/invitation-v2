@@ -1,7 +1,7 @@
 import CreateInvitationForm from "../organisms/CreateInvitationForm";
 import InvitationView from "../organisms/InvitationView";
 import InvitationResponseView from "../organisms/InvitationResponseView"
-import Paragraph from "../atoms/Paragraph"
+import Typography from "../atoms/Typography"
 
 const CreateInvitationTemplate = ({
 	message,
@@ -74,7 +74,7 @@ const CreateInvitationTemplate = ({
 			<div className="flex w-full grow self-baseline sm:w-1/3">
         <div className="flex flex-wrap gap-2 sm:fixed">
         <div className="w-full">
-          <Paragraph>Message Preview</Paragraph>
+          <Typography element="h3">Message Preview</Typography>
 
           <InvitationView
             message={message ? message : preview.message}
@@ -88,7 +88,7 @@ const CreateInvitationTemplate = ({
           />
         </div>
         <div className="w-full grow sm:w-1/3">
-          <Paragraph>If yes:</Paragraph>
+          <Typography element="h3">If yes:</Typography>
           <InvitationResponseView
             message={successMessage ? successMessage : preview.successMessage}
             imgUrl={successImage ? successImage : preview.successImage}
@@ -98,7 +98,7 @@ const CreateInvitationTemplate = ({
           />
         </div>
         <div className="w-full grow sm:w-1/3">
-          <Paragraph>If no:</Paragraph>
+          <Typography element="h3">If no:</Typography>
           <InvitationResponseView
             message={failedMessage ? failedMessage : preview.failedMessage}
             imgUrl={failedImage ? failedImage : preview.failedImage}

@@ -1,5 +1,5 @@
 import Image from "../atoms/Image";
-import Paragraph from "../atoms/Paragraph";
+import Typography from "../atoms/Typography";
 import ButtonGroup from "../molecules/ButtonGroup";
 import Container from "../atoms/Container";
 
@@ -16,7 +16,7 @@ const InvitationView = ({
 }) => {
   return (
     <Container backgroundColor={backgroundColor} screen={screen}>
-      <Paragraph fontColor={fontColor} textCenter={true}>{message}</Paragraph>
+      <Typography fontColor={fontColor} textCenter={true}>{message}</Typography>
       <Image url={imgUrl} alt={imgAlt} />
       <ButtonGroup
         texts={responses}

@@ -1,11 +1,11 @@
-import Paragraph from "../atoms/Paragraph";
+import Typography from "../atoms/Typography";
 import RadioGroupContainer from "../atoms/RadioGroupContainer";
 import RadioInputWithLabel from "./RadioInputWithLabel";
 
 const RadioGroup = ({ title, radios, onChange, selected }) => {
   return (
     <RadioGroupContainer onChange={onChange}>
-      <Paragraph>{title}</Paragraph>
+      <Typography element="h3">{title}</Typography>
       {radios.map((r, i) => (
         <RadioInputWithLabel
           key={i}

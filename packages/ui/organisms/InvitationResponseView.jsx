@@ -1,5 +1,5 @@
 import Image from "../atoms/Image";
-import Paragraph from "../atoms/Paragraph";
+import Typography from "../atoms/Typography";
 import Container from "../atoms/Container";
 
 const InvitationResponseView = ({
@@ -11,7 +11,7 @@ const InvitationResponseView = ({
 }) => {
   return (
     <Container backgroundColor={backgroundColor}>
-      <Paragraph fontColor={fontColor} textCenter={true}>{message}</Paragraph>
+      <Typography fontColor={fontColor} textCenter={true}>{message}</Typography>
       <Image url={imgUrl} alt={imgAlt} />
     </Container>
   );
