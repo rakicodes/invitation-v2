@@ -11,7 +11,7 @@ const InvitationResponseView = ({
 }) => {
   return (
     <Container backgroundColor={backgroundColor}>
-      <Paragraph fontColor={fontColor}>{message}</Paragraph>
+      <Paragraph fontColor={fontColor} textCenter={true}>{message}</Paragraph>
       <Image url={imgUrl} alt={imgAlt} />
     </Container>
   );
