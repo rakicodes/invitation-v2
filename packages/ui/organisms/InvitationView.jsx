@@ -12,11 +12,13 @@ const InvitationView = ({
   fontColor,
   buttonBackgroundColor,
   buttonFontColor,
-  screen
+  screen,
 }) => {
   return (
     <InvitationContainer backgroundColor={backgroundColor} screen={screen}>
-      <Typography fontColor={fontColor} textCenter={true} fontSize="lg">{message}</Typography>
+      <Typography fontColor={fontColor} textCenter={true} fontSize="lg">
+        {message}
+      </Typography>
       <Image url={imgUrl} alt={imgAlt} />
       <ButtonGroup
         texts={responses}

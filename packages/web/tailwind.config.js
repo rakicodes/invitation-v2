@@ -6,7 +6,7 @@ module.exports = {
       pink: "#b25674",
       lightpink: "#f3ccd9",
       white: "#fff9fb",
-    }
+    },
   },
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",

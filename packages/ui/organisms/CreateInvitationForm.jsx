@@ -33,7 +33,7 @@ const CreateInvitationForm = ({
   handleChangeButtonBackgroundColor,
   handleChangeButtonFontColor,
   handleSubmit,
-  preview
+  preview,
 }) => {
   return (
     <div className="flex flex-col gap-2">
