@@ -14,7 +14,10 @@ const LoginTemplate = ({
 	return (
 		<CenterCardContainer>
 			<FormContainer>
-				<Typography element="h1">Log in</Typography>
+				<div className="pb-2">
+					<Typography element="h1" fontSize="lg" textCenter={true}>Welcome Back</Typography>
+					<Typography fontSize="sm" textCenter={true}>Need to send an invitation? Log in to your account!</Typography>
+				</div>
 				<LoginForm
 					email={email}
 					password={password}
@@ -22,8 +25,8 @@ const LoginTemplate = ({
 					handleChangePassword={handleChangePassword}
 					handleSubmit={handleSubmit}
 				/>
-				<Typography>
-					Don't have an account? <Link href="/signup">Sign up</Link>
+				<Typography textCenter={true} fontSize="sm">
+					Don't have an account? <Link href="/signup" className="text-pink hover:underline">Sign up</Link>
 				</Typography>
 			</FormContainer>
 		</CenterCardContainer>

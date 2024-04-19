@@ -16,7 +16,7 @@ const InvitationView = ({
 }) => {
   return (
     <InvitationContainer backgroundColor={backgroundColor} screen={screen}>
-      <Typography fontColor={fontColor} textCenter={true}>{message}</Typography>
+      <Typography fontColor={fontColor} textCenter={true} fontSize="lg">{message}</Typography>
       <Image url={imgUrl} alt={imgAlt} />
       <ButtonGroup
         texts={responses}

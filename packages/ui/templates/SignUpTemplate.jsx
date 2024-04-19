@@ -16,8 +16,10 @@ const SignUpTemplate = ({
 	return (
 		<CenterCardContainer>
 			<FormContainer>
-				<Typography element="h1">Create an account</Typography>
-				<Typography>Get started and send your first invitation!</Typography>
+				<div className="pb-2">
+					<Typography element="h1" fontSize="lg" textCenter={true}>Create an account</Typography>
+					<Typography fontSize="sm" textCenter={true}>Get started and send your first invitation!</Typography>
+				</div>
 				<SignUpForm
 					name={name}
 					email={email}
@@ -27,8 +29,8 @@ const SignUpTemplate = ({
 					handleChangePassword={handleChangePassword}
 					handleSubmit={handleSubmit}
 				/>
-				<Typography>
-					Already have an account? <Link href="/login">Log in</Link>
+				<Typography textCenter={true} fontSize="sm">
+					Already have an account? <Link href="/login" className="text-pink hover:underline">Log in</Link>
 				</Typography>
 			</FormContainer>
 		</CenterCardContainer>

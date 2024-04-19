@@ -38,6 +38,10 @@ const CreateInvitationTemplate = ({
 	return (
 		<div className="flex flex-wrap gap-2 p-2 relative">
       <div className="w-full grow sm:w-1/3">
+        <div className="pb-2">
+          <Typography fontSize="lg" textCenter={true}>Create your invitation</Typography>
+          <Typography fontSize="sm" textCenter={true}>Fill out the fields below</Typography>
+        </div>
         <CreateInvitationForm
           message={message}
           image={image}
