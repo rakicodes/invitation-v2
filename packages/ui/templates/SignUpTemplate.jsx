@@ -1,4 +1,5 @@
 import SignUpForm from "../organisms/SignUpForm";
+import FormContainer from "../atoms/FormContainer";
 
 const SignUpTemplate = ({
   name,
@@ -10,7 +11,7 @@ const SignUpTemplate = ({
   handleSubmit,
 }) => {
   return (
-    <>
+    <FormContainer>
       <SignUpForm
         name={name}
         email={email}
@@ -20,7 +21,7 @@ const SignUpTemplate = ({
         handleChangePassword={handleChangePassword}
         handleSubmit={handleSubmit}
       />
-    </>
+    </FormContainer>
   );
 };
 

@@ -1,5 +1,9 @@
 const Paragraph = ({ fontColor, children }) => {
-  return <p style={{ color: fontColor }}>{children}</p>;
+  return (
+    <p className="w-full" style={{ color: fontColor }}>
+      {children}
+    </p>
+  );
 };
 
 export default Paragraph;

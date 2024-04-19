@@ -10,7 +10,7 @@ const ColorInputWithLabel = ({
   onChange,
 }) => {
   return (
-    <>
+    <div className="flex flex-col w-full grow md:w-1/3">
       <Label label={label} />
       <ColorInput
         type={type}
@@ -19,7 +19,7 @@ const ColorInputWithLabel = ({
         value={value}
         onChange={onChange}
       />
-    </>
+    </div>
   );
 };
 

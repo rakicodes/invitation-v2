@@ -10,7 +10,7 @@ const TextInputWithLabel = ({
   onChange,
 }) => {
   return (
-    <>
+    <div className="flex flex-col w-full">
       <Label label={label} />
       <TextInput
         type={type}
@@ -19,7 +19,7 @@ const TextInputWithLabel = ({
         value={value}
         onChange={onChange}
       />
-    </>
+    </div>
   );
 };
 

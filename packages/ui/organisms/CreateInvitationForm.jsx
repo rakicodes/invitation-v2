@@ -2,6 +2,7 @@ import Button from "../atoms/Button";
 import TextInputWithLabel from "../molecules/TextInputWithLabel";
 import ColorInputWithLabel from "../molecules/ColorInputWithLabel";
 import RadioGroup from "../molecules/RadioGroup";
+import FormContainer from "../atoms/FormContainer";
 
 const CreateInvitationForm = ({
   message,
@@ -35,7 +36,7 @@ const CreateInvitationForm = ({
   handleSubmit,
 }) => {
   return (
-    <>
+    <FormContainer>
       <TextInputWithLabel
         type="text"
         label="Message"
@@ -92,44 +93,49 @@ const CreateInvitationForm = ({
         value={recipient}
         onChange={handleChangeRecipient}
       />
-      <ColorInputWithLabel
-        type="color"
-        label="Background Color"
-        name="backgroundColor"
-        required={true}
-        value={backgroundColor}
-        onChange={handleChangeBackgroundColor}
-      />
-      <ColorInputWithLabel
-        type="color"
-        label="Font Color"
-        name="fontColor"
-        required={true}
-        value={fontColor}
-        onChange={handleChangeFontColor}
-      />
-      <ColorInputWithLabel
-        type="color"
-        label="Button Background Color"
-        name="buttonBackgroundColor"
-        required={true}
-        value={buttonBackgroundColor}
-        onChange={handleChangeButtonBackgroundColor}
-      />
-      <ColorInputWithLabel
-        type="color"
-        label="Button Font Color"
-        name="buttonFontColor"
-        required={true}
-        value={buttonFontColor}
-        onChange={handleChangeButtonFontColor}
-      />
+      <div className="flex flex-wrap gap-2 w-full">
+        <ColorInputWithLabel
+          type="color"
+          label="Background Color"
+          name="backgroundColor"
+          required={true}
+          value={backgroundColor}
+          onChange={handleChangeBackgroundColor}
+        />
+        <ColorInputWithLabel
+          type="color"
+          label="Font Color"
+          name="fontColor"
+          required={true}
+          value={fontColor}
+          onChange={handleChangeFontColor}
+        />
+        <ColorInputWithLabel
+          type="color"
+          label="Button Background Color"
+          name="buttonBackgroundColor"
+          required={true}
+          value={buttonBackgroundColor}
+          onChange={handleChangeButtonBackgroundColor}
+        />
+        <ColorInputWithLabel
+          type="color"
+          label="Button Font Color"
+          name="buttonFontColor"
+          required={true}
+          value={buttonFontColor}
+          onChange={handleChangeButtonFontColor}
+        />
+      </div>
+
       <RadioGroup
+        title="Response Effect?"
         radios={responseEffectRadioGroup}
         onChange={handleChangeResponseEffect}
         selected={responseEffect}
       />
       <RadioGroup
+        title="Visibility?"
         radios={isPublicRadioGroup}
         onChange={handleChangeIsPublic}
         selected={isPublic}
@@ -137,7 +143,7 @@ const CreateInvitationForm = ({
       <Button type="submit" onClick={handleSubmit}>
         Create Invitation
       </Button>
-    </>
+    </FormContainer>
   );
 };
 
