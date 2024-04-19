@@ -36,7 +36,7 @@ const CreateInvitationForm = ({
   preview
 }) => {
   return (
-    <>
+    <div className="flex flex-col gap-2">
       <TextInputWithLabel
         type="text"
         label="Message"
@@ -150,7 +150,7 @@ const CreateInvitationForm = ({
       <Button type="submit" onClick={handleSubmit}>
         Create Invitation
       </Button>
-    </>
+    </div>
   );
 };
 
