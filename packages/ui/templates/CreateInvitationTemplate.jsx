@@ -36,7 +36,7 @@ const CreateInvitationTemplate = ({
   preview
 }) => {
 	return (
-		<div className="flex flex-wrap gap-2 p-2">
+		<div className="flex flex-wrap gap-2 p-2 relative">
       <div className="w-full grow sm:w-1/3">
         <CreateInvitationForm
           message={message}
@@ -71,7 +71,8 @@ const CreateInvitationTemplate = ({
           preview={preview}
         />
       </div>
-			<div className="flex flex-wrap gap-2 w-full grow self-baseline sm:w-1/3">
+			<div className="flex w-full grow self-baseline sm:w-1/3">
+        <div className="flex flex-wrap gap-2 sm:fixed">
         <div className="w-full">
           <Paragraph>Message Preview</Paragraph>
 
@@ -106,6 +107,8 @@ const CreateInvitationTemplate = ({
             fontColor={fontColor ? fontColor : preview.fontColor}
           />
         </div>
+        </div>
+        
       </div>
 		</div>
 	);
