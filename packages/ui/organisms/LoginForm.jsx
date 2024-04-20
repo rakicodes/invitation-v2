@@ -9,7 +9,7 @@ const LoginForm = ({
   handleSubmit,
 }) => {
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="flex flex-col gap-2" onSubmit={handleSubmit}>
       <TextInputWithLabel
         type="email"
         label="Email"
