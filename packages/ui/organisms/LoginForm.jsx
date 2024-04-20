@@ -9,7 +9,7 @@ const LoginForm = ({
   handleSubmit,
 }) => {
   return (
-    <>
+    <form onSubmit={handleSubmit}>
       <TextInputWithLabel
         type="email"
         label="Email"
@@ -26,10 +26,10 @@ const LoginForm = ({
         value={password}
         onChange={handleChangePassword}
       />
-      <Button type="submit" onClick={handleSubmit}>
+      <Button type="submit">
         Log In
       </Button>
-    </>
+    </form>
   );
 };
 

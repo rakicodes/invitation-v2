@@ -11,7 +11,7 @@ const SignUpForm = ({
   handleSubmit,
 }) => {
   return (
-    <>
+    <form onSubmit={handleSubmit}>
       <TextInputWithLabel
         type="text"
         label="Name"
@@ -36,10 +36,10 @@ const SignUpForm = ({
         value={password}
         onChange={handleChangePassword}
       />
-      <Button type="submit" onClick={handleSubmit}>
+      <Button type="submit">
         Sign Up
       </Button>
-    </>
+    </form>
   );
 };
 

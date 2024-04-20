@@ -1,20 +1,31 @@
-import InvitationTemplate from "@ui/templates/InvitationTemplate"
-import data from "@/app/data"
-const page = () => {
-  return (
-    <>
-      <InvitationTemplate 
-        message={data.message}
-        imgUrl={data.messageImage}
-        imgAlt="Invitation image"
-        backgroundColor={data.backgroundColor}
-        fontColor={data.fontColor}
-        buttonBackgroundColor={data.buttonBackgroundColor}
-        buttonFontColor={data.buttonFontColor}
-        responses={["yes","no"]}
-      />
-    </>
-  )
+import InvitationTemplate from "@ui/templates/InvitationTemplate";
+import { cookies } from "next/headers";
+
+const Page = async ({ params }) => {
+	const res = await fetch(
+		`http://localhost:3333/api/invitations/${params.id}`,
+		{
+			headers: {
+				Authorization: `Bearer ${cookies().get('token').value}`,
+			},
+		}
+	);
+	const data = await res.json();
+
+	return (
+		<>
+			<InvitationTemplate
+				message={data.message}
+				imgUrl={data.messageImage}
+				imgAlt="Invitation image"
+				backgroundColor={data.backgroundColor}
+				fontColor={data.fontColor}
+				buttonBackgroundColor={data.buttonBackgroundColor}
+				buttonFontColor={data.buttonFontColor}
+				responses={["yes", "no"]}
+			/>
+		</>
+	);
 }
 
-export default page
+export default Page;
