@@ -111,19 +111,19 @@ const createInvitation = asyncHandler(async (req, res) => {
       failedMessage: failedMessage,
       failedImage: failedImage,
       recepient: recepient,
-      isPublic: isPublic,
+      isPublic: isPublic==="PUBLIC",
       backgroundColor: backgroundColor,
       fontColor: fontColor,
       buttonBackgroundColor: buttonBackgroundColor,
       buttonFontColor: buttonFontColor,
       response: "awaiting",
-      responseEffect: responseEffect,
+      responseEffect: responseEffect!=="NO_EFFECT",
     });
     res.status(201).json(invitation);
   } catch (error) {
     res
       .status(400)
-      .json("Sorry something went wrong. Couldn't create invitation");
+      .json("Sorry something went wrong. Couldn't create invitation"+error);
   }
 });
 

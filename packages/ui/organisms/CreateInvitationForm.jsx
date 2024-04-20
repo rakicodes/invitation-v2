@@ -36,7 +36,7 @@ const CreateInvitationForm = ({
   preview,
 }) => {
   return (
-    <div className="flex flex-col gap-2">
+    <form className="flex flex-col gap-2" onSubmit={handleSubmit}>
       <TextInputWithLabel
         type="text"
         label="Message"
@@ -147,10 +147,10 @@ const CreateInvitationForm = ({
         onChange={handleChangeIsPublic}
         selected={isPublic}
       />
-      <Button type="submit" onClick={handleSubmit}>
+      <Button type="submit">
         Create Invitation
       </Button>
-    </div>
+    </form>
   );
 };
 

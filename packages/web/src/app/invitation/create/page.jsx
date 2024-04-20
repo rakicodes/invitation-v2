@@ -5,6 +5,9 @@ import CreateInvitationTemplate from '@ui/templates/CreateInvitationTemplate'
 import responseEffects from './responseEffect'
 import visibilityInvitation from './visibilityInvitation'
 import sampleInvitation from './sampleInvitation'
+import { getCookie } from 'cookies-next';
+import { useRouter } from 'next/navigation'
+
 
 const Page = () => {
   const [message, setMessage] = useState("")
@@ -20,6 +23,35 @@ const Page = () => {
   const [fontColor, setFontColor] = useState(sampleInvitation.fontColor)
   const [buttonBackgroundColor, setButtonBackgroundColor] = useState(sampleInvitation.buttonBackgroundColor)
   const [buttonFontColor, setButtonFontColor] = useState(sampleInvitation.buttonFontColor)
+  const router = useRouter()
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    const res = await fetch('http://localhost:3333/api/invitations', {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json',
+        Authorization: `Bearer ${JSON.parse(getCookie('session')).token}`
+      },
+      body: JSON.stringify({
+        message,
+        messageImage: image,
+        successMessage,
+        successImage,
+        failedMessage,
+        failedImage,
+        recipient,
+        responseEffect,
+        isPublic,
+        backgroundColor,
+        fontColor,
+        buttonBackgroundColor,
+        buttonFontColor
+      })
+    })
+    const data = await res.json()
+    router.push('/profile')
+  }
 
   return (
     <>
@@ -52,7 +84,7 @@ const Page = () => {
         handleChangeFontColor={(e) => setFontColor(e.target.value)}
         handleChangeButtonBackgroundColor={(e) => setButtonBackgroundColor(e.target.value)}
         handleChangeButtonFontColor={(e) => setButtonFontColor(e.target.value)}
-        handleSubmit={() => console.log("Creating invitation....")}
+        handleSubmit={handleSubmit}
         preview={sampleInvitation}
       />
     </>
