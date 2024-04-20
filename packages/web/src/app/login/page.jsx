@@ -21,7 +21,7 @@ const Page = () => {
       })
     })
     const data = await res.json()
-    setCookie('token', data.token)
+    setCookie('session', { id: data._id, token: data.token })
 
   }
 

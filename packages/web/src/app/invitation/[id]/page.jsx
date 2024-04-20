@@ -6,12 +6,11 @@ const Page = async ({ params }) => {
 		`http://localhost:3333/api/invitations/${params.id}`,
 		{
 			headers: {
-				Authorization: `Bearer ${cookies().get('token').value}`,
+				Authorization: `Bearer ${JSON.parse(cookies().get('session').value).token}`,
 			},
 		}
 	);
 	const data = await res.json();
-
 	return (
 		<>
 			<InvitationTemplate
