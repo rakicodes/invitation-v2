@@ -1,8 +1,8 @@
 "use client"
 
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import SignUpTemplate from '@ui/templates/SignUpTemplate'
-import { setCookie } from 'cookies-next';
+import { setCookie, getCookie } from 'cookies-next';
 import { useRouter } from 'next/navigation'
 
 const Page = () => {
@@ -10,6 +10,12 @@ const Page = () => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const router = useRouter()
+
+  useEffect(() => {
+    if (getCookie('session')) {
+      router.push('/profile')
+    }
+  }, [router])
 
   const handleSubmit = async (e) => {
     e.preventDefault();

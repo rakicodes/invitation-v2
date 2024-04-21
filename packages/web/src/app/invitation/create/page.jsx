@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import CreateInvitationTemplate from '@ui/templates/CreateInvitationTemplate'
 import responseEffects from './responseEffect'
 import visibilityInvitation from './visibilityInvitation'
@@ -24,6 +24,12 @@ const Page = () => {
   const [buttonBackgroundColor, setButtonBackgroundColor] = useState(sampleInvitation.buttonBackgroundColor)
   const [buttonFontColor, setButtonFontColor] = useState(sampleInvitation.buttonFontColor)
   const router = useRouter()
+
+  useEffect(() => {
+		if (!getCookie("session")) {
+			router.push('/')
+		}
+	}, [router])
 
   const handleSubmit = async (e) => {
     e.preventDefault()

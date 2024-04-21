@@ -1,5 +1,6 @@
 import InvitationTemplate from "@ui/templates/InvitationTemplate";
 import { cookies } from "next/headers";
+import { redirect } from 'next/navigation'
 
 const Page = async ({ params }) => {
 	const res = await fetch(
@@ -11,6 +12,9 @@ const Page = async ({ params }) => {
 		}
 	);
 	const data = await res.json();
+	if (res.status===401 || res.status===404) {
+		redirect("/")
+	}
 	return (
 		<>
 			<InvitationTemplate

@@ -28,6 +28,12 @@ const Page = ({ params }) => {
 	const router = useRouter();
 
 	useEffect(() => {
+		if (!getCookie("session")) {
+			router.push('/')
+		}
+	}, [router])
+
+	useEffect(() => {
 		const fetchData = async () => {
 			try {
 				const res = await fetch(`http://localhost:3333/api/invitations/${id}`, {
@@ -36,6 +42,10 @@ const Page = ({ params }) => {
 					},
 				});
 				const data = await res.json();
+				if (data.user !== JSON.parse(getCookie("session")).id) {
+					router.push(`/invitation/${id}`)
+					return
+				}
 				setData(data);
 			} catch (error) {
 				console.log("error", error);
@@ -43,7 +53,7 @@ const Page = ({ params }) => {
 		};
 
 		fetchData();
-	}, [id]);
+	}, [id, router]);
 
 	useEffect(() => {
 		setMessage(data.message)
