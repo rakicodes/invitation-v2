@@ -143,7 +143,6 @@ const editInvitation = asyncHandler(async (req, res) => {
     }
 
     const {
-      user,
       message,
       messageImage,
       successMessage,
@@ -160,7 +159,7 @@ const editInvitation = asyncHandler(async (req, res) => {
       responseEffect,
     } = req.body;
 
-    if (!req.user && user.toString() !== req.user.id) {
+    if (!req.user && invitation.user.toString() !== req.user.id) {
       res.status(401).json("Unauthorized. You cannot edit this invitation.");
       return;
     }
@@ -185,13 +184,13 @@ const editInvitation = asyncHandler(async (req, res) => {
         failedMessage,
         failedImage,
         recepient,
-        isPublic,
+        isPublic: isPublic==="PUBLIC",
         backgroundColor,
         fontColor,
         buttonBackgroundColor,
         buttonFontColor,
         response,
-        responseEffect,
+        responseEffect: responseEffect!=="NO_EFFECT",
       },
     );
 
