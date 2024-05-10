@@ -1,4 +1,4 @@
-import { cookies } from "next/headers";
+"use client"
 
 const page = () => {
   return (
