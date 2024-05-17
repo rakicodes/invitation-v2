@@ -13,8 +13,6 @@ const EditInvitationForm = ({
   recepient,
   responseEffect,
   responseEffectRadioGroup,
-  isPublic,
-  isPublicRadioGroup,
   backgroundColor,
   fontColor,
   buttonBackgroundColor,
@@ -27,7 +25,6 @@ const EditInvitationForm = ({
   handleChangeFailedImage,
   handleChangeRecepient,
   handleChangeResponseEffect,
-  handleChangeIsPublic,
   handleChangeBackgroundColor,
   handleChangeFontColor,
   handleChangeButtonBackgroundColor,
@@ -132,12 +129,6 @@ const EditInvitationForm = ({
         radios={responseEffectRadioGroup}
         onChange={handleChangeResponseEffect}
         selected={responseEffect}
-      />
-      <RadioGroup
-        title="Visibility?"
-        radios={isPublicRadioGroup}
-        onChange={handleChangeIsPublic}
-        selected={isPublic}
       />
       <Button type="submit">
         Save Changes

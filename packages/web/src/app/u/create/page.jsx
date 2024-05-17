@@ -3,7 +3,6 @@
 import React, { useState, useEffect } from 'react'
 import CreateInvitationTemplate from '@ui/templates/CreateInvitationTemplate'
 import responseEffects from './responseEffect'
-import visibilityInvitation from './visibilityInvitation'
 import sampleInvitation from './sampleInvitation'
 import { getCookie } from 'cookies-next';
 import { useRouter } from 'next/navigation'
@@ -16,9 +15,8 @@ const Page = () => {
   const [successImage, setSuccessImage] = useState("")
   const [failedMessage, setFailedMessage] = useState("")
   const [failedImage, setFailedImage] = useState("")
-  const [recipient, setRecipient] = useState("")
+  const [recepient, setrecepient] = useState("")
   const [responseEffect, setResponseEffect] = useState("NO_EFFECT")
-  const [isPublic, setIsPublic] = useState("PRIVATE")
   const [backgroundColor, setBackgroundColor] = useState(sampleInvitation.backgroundColor)
   const [fontColor, setFontColor] = useState(sampleInvitation.fontColor)
   const [buttonBackgroundColor, setButtonBackgroundColor] = useState(sampleInvitation.buttonBackgroundColor)
@@ -46,9 +44,8 @@ const Page = () => {
         successImage,
         failedMessage,
         failedImage,
-        recipient,
+        recepient,
         responseEffect,
-        isPublic,
         backgroundColor,
         fontColor,
         buttonBackgroundColor,
@@ -68,11 +65,9 @@ const Page = () => {
         successImage={successImage}
         failedMessage={failedMessage}
         failedImage={failedImage}
-        recipient={recipient}
+        recepient={recepient}
         responseEffect={responseEffect}
         responseEffectRadioGroup={responseEffects}
-        isPublic={isPublic}
-        isPublicRadioGroup={visibilityInvitation}
         backgroundColor={backgroundColor}
         fontColor={fontColor}
         buttonBackgroundColor={buttonBackgroundColor}
@@ -83,9 +78,8 @@ const Page = () => {
         handleChangeSuccessImage={(e) => setSuccessImage(e.target.value)}
         handleChangeFailedMessage={(e) => setFailedMessage(e.target.value)}
         handleChangeFailedImage={(e) => setFailedImage(e.target.value)}
-        handleChangeRecipient={(e) => setRecipient(e.target.value)}
+        handleChangerecepient={(e) => setrecepient(e.target.value)}
         handleChangeResponseEffect={(e) => setResponseEffect(e.target.value)}
-        handleChangeIsPublic={(e) => setIsPublic(e.target.value)}
         handleChangeBackgroundColor={(e) => setBackgroundColor(e.target.value)}
         handleChangeFontColor={(e) => setFontColor(e.target.value)}
         handleChangeButtonBackgroundColor={(e) => setButtonBackgroundColor(e.target.value)}

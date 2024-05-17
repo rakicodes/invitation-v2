@@ -13,8 +13,6 @@ const EditInvitationTemplate = ({
 	recepient,
 	responseEffect,
 	responseEffectRadioGroup,
-	isPublic,
-	isPublicRadioGroup,
 	backgroundColor,
 	fontColor,
 	buttonBackgroundColor,
@@ -27,7 +25,6 @@ const EditInvitationTemplate = ({
 	handleChangeFailedImage,
 	handleChangeRecepient,
 	handleChangeResponseEffect,
-	handleChangeIsPublic,
 	handleChangeBackgroundColor,
 	handleChangeFontColor,
 	handleChangeButtonBackgroundColor,
@@ -59,8 +56,6 @@ const EditInvitationTemplate = ({
 					recepient={recepient}
 					responseEffect={responseEffect}
 					responseEffectRadioGroup={responseEffectRadioGroup}
-					isPublic={isPublic}
-					isPublicRadioGroup={isPublicRadioGroup}
 					backgroundColor={backgroundColor}
 					fontColor={fontColor}
 					buttonBackgroundColor={buttonBackgroundColor}
@@ -73,7 +68,6 @@ const EditInvitationTemplate = ({
 					handleChangeFailedImage={handleChangeFailedImage}
 					handleChangeRecepient={handleChangeRecepient}
 					handleChangeResponseEffect={handleChangeResponseEffect}
-					handleChangeIsPublic={handleChangeIsPublic}
 					handleChangeBackgroundColor={handleChangeBackgroundColor}
 					handleChangeFontColor={handleChangeFontColor}
 					handleChangeButtonBackgroundColor={handleChangeButtonBackgroundColor}

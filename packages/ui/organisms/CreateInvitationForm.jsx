@@ -10,11 +10,9 @@ const CreateInvitationForm = ({
   successImage,
   failedMessage,
   failedImage,
-  recipient,
+  recepient,
   responseEffect,
   responseEffectRadioGroup,
-  isPublic,
-  isPublicRadioGroup,
   backgroundColor,
   fontColor,
   buttonBackgroundColor,
@@ -25,9 +23,8 @@ const CreateInvitationForm = ({
   handleChangeSuccessImage,
   handleChangeFailedMessage,
   handleChangeFailedImage,
-  handleChangeRecipient,
+  handleChangerecepient,
   handleChangeResponseEffect,
-  handleChangeIsPublic,
   handleChangeBackgroundColor,
   handleChangeFontColor,
   handleChangeButtonBackgroundColor,
@@ -93,11 +90,11 @@ const CreateInvitationForm = ({
       />
       <TextInputWithLabel
         type="text"
-        label="Recipient"
-        name="Recipient"
+        label="recepient"
+        name="recepient"
         required={true}
-        value={recipient}
-        onChange={handleChangeRecipient}
+        value={recepient}
+        onChange={handleChangerecepient}
         placeholder={preview.recepient}
       />
       <div className="flex flex-wrap gap-2 w-full">
@@ -140,12 +137,6 @@ const CreateInvitationForm = ({
         radios={responseEffectRadioGroup}
         onChange={handleChangeResponseEffect}
         selected={responseEffect}
-      />
-      <RadioGroup
-        title="Visibility?"
-        radios={isPublicRadioGroup}
-        onChange={handleChangeIsPublic}
-        selected={isPublic}
       />
       <Button type="submit">
         Create Invitation

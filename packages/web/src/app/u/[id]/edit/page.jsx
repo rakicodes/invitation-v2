@@ -3,7 +3,6 @@
 import React, { useState, useEffect } from "react";
 import EditInvitationTemplate from "@ui/templates/EditInvitationTemplate";
 import responseEffects from "@/app/u/create/responseEffect";
-import visibilityInvitation from "@/app/u/create/visibilityInvitation";
 import LoadingTemplate from "@ui/templates/LoadingTemplate";
 import { getCookie } from "cookies-next";
 import { useRouter } from "next/navigation";
@@ -19,7 +18,6 @@ const Page = ({ params }) => {
 	const [failedImage, setFailedImage] = useState("");
 	const [recepient, setRecepient] = useState("");
 	const [responseEffect, setResponseEffect] = useState("NO_EFFECT");
-	const [isPublic, setIsPublic] = useState("PRIVATE");
 	const [backgroundColor, setBackgroundColor] = useState("#ffffff");
 	const [fontColor, setFontColor] = useState("#ffffff");
 	const [buttonBackgroundColor, setButtonBackgroundColor] = useState("#ffffff");
@@ -64,7 +62,6 @@ const Page = ({ params }) => {
     setFailedImage(data.failedImage)
     setRecepient(data.recepient)
     setResponseEffect(data.responseEffect ? "RUN_AWAY" : "NO_EFFECT")
-    setIsPublic(data.isPublic ? "PUBLIC" : "PRIVATE")
     setBackgroundColor(data.backgroundColor)
     setFontColor(data.fontColor)
     setButtonBackgroundColor(data.buttonBackgroundColor)
@@ -89,7 +86,6 @@ const Page = ({ params }) => {
 				failedImage,
 				recepient,
 				responseEffect,
-				isPublic,
 				backgroundColor,
 				fontColor,
 				buttonBackgroundColor,
@@ -118,8 +114,6 @@ const Page = ({ params }) => {
 				recepient={recepient}
 				responseEffect={responseEffect}
 				responseEffectRadioGroup={responseEffects}
-				isPublic={isPublic}
-				isPublicRadioGroup={visibilityInvitation}
 				backgroundColor={backgroundColor}
 				fontColor={fontColor}
 				buttonBackgroundColor={buttonBackgroundColor}
@@ -132,7 +126,6 @@ const Page = ({ params }) => {
 				handleChangeFailedImage={(e) => setFailedImage(e.target.value)}
 				handleChangeRecepient={(e) => setRecepient(e.target.value)}
 				handleChangeResponseEffect={(e) => setResponseEffect(e.target.value)}
-				handleChangeIsPublic={(e) => setIsPublic(e.target.value)}
 				handleChangeBackgroundColor={(e) => setBackgroundColor(e.target.value)}
 				handleChangeFontColor={(e) => setFontColor(e.target.value)}
 				handleChangeButtonBackgroundColor={(e) =>

@@ -9,7 +9,7 @@ const ButtonGroup = ({ texts, fontColor, backgroundColor, fullWidth, btnPos, isE
           backgroundColor={backgroundColor}
           fullWidth={fullWidth}
           btnPos={btnPos}
-          isEffect={isEffect[i]}
+          isEffect={isEffect ? isEffect[i] : false}
           handleMouseover={handleMouseover}
         >
           {text}

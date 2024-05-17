@@ -10,11 +10,9 @@ const CreateInvitationTemplate = ({
   successImage,
   failedMessage,
   failedImage,
-  recipient,
+  recepient,
   responseEffect,
   responseEffectRadioGroup,
-  isPublic,
-  isPublicRadioGroup,
   backgroundColor,
   fontColor,
   buttonBackgroundColor,
@@ -25,9 +23,8 @@ const CreateInvitationTemplate = ({
   handleChangeSuccessImage,
   handleChangeFailedMessage,
   handleChangeFailedImage,
-  handleChangeRecipient,
+  handleChangerecepient,
   handleChangeResponseEffect,
-  handleChangeIsPublic,
   handleChangeBackgroundColor,
   handleChangeFontColor,
   handleChangeButtonBackgroundColor,
@@ -53,11 +50,9 @@ const CreateInvitationTemplate = ({
           successImage={successImage}
           failedMessage={failedMessage}
           failedImage={failedImage}
-          recipient={recipient}
+          recepient={recepient}
           responseEffect={responseEffect}
           responseEffectRadioGroup={responseEffectRadioGroup}
-          isPublic={isPublic}
-          isPublicRadioGroup={isPublicRadioGroup}
           backgroundColor={backgroundColor}
           fontColor={fontColor}
           buttonBackgroundColor={buttonBackgroundColor}
@@ -68,9 +63,8 @@ const CreateInvitationTemplate = ({
           handleChangeSuccessImage={handleChangeSuccessImage}
           handleChangeFailedMessage={handleChangeFailedMessage}
           handleChangeFailedImage={handleChangeFailedImage}
-          handleChangeRecipient={handleChangeRecipient}
+          handleChangerecepient={handleChangerecepient}
           handleChangeResponseEffect={handleChangeResponseEffect}
-          handleChangeIsPublic={handleChangeIsPublic}
           handleChangeBackgroundColor={handleChangeBackgroundColor}
           handleChangeFontColor={handleChangeFontColor}
           handleChangeButtonBackgroundColor={handleChangeButtonBackgroundColor}
