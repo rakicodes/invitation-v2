@@ -16,7 +16,8 @@ const InvitationView = ({
   full,
   btnPos,
   isEffect,
-  handleMouseover
+  handleMouseover,
+  handleResponses
 }) => {
   return (
     <InvitationContainer backgroundColor={backgroundColor} screen={screen} full={full}>
@@ -32,6 +33,7 @@ const InvitationView = ({
         btnPos={btnPos}
         isEffect={isEffect}
         handleMouseover={handleMouseover}
+        handleResponses={handleResponses}
       />
     </InvitationContainer>
   );

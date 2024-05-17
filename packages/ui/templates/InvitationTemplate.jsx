@@ -12,7 +12,8 @@ const InvitationTemplate = ({
   fontColor,
   buttonBackgroundColor,
   buttonFontColor,
-  isEffect
+  isEffect,
+  handleResponses
 }) => {
   const [xPos, setXPos] = useState("0px")
 	const [yPos, setYPos] = useState("0px")
@@ -46,6 +47,7 @@ const InvitationTemplate = ({
         handleMouseover={handleMouseover}
         btnPos={[`${xPos}px`, `${yPos}px`]}
         isEffect={[false, isEffect && isMouseover]}
+        handleResponses={handleResponses}
       />
     </div>
   );

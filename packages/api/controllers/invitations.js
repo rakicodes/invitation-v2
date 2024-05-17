@@ -47,7 +47,7 @@ const getInvitation = asyncHandler(async (req, res) => {
  ** @route   GET /api/invitations/user/:id
  ** @access  Private
  */
- const getUserInvitations = asyncHandler(async (req, res) => {
+const getUserInvitations = asyncHandler(async (req, res) => {
 	try {
 		const invitation = await Invitation.find({ user: req.params.id });
 		if (!invitation) {
@@ -197,6 +197,39 @@ const editInvitation = asyncHandler(async (req, res) => {
 });
 
 /**
+ ** @desc    edit invitation to update recepient response
+ ** @route   PUT /api/invitations/reply/:id
+ ** @access  Public
+ */
+ const replyInvitation = asyncHandler(async (req, res) => {
+	try {
+		const invitation = await Invitation.findById(req.params.id);
+		if (!invitation) {
+			res
+				.status(404)
+				.json("Sorry something went wrong. Couldn't get invitation");
+			return;
+		}
+
+		const { response } = req.body;
+
+		const invitationEdit = await Invitation.updateOne(
+			{ _id: req.params.id },
+			{
+				response,
+			}
+		);
+
+		res.status(201).json(invitationEdit);
+	} catch (error) {
+		res
+			.status(404)
+			.json("Sorry something went wrong. Couldn't edit invitation");
+	}
+});
+
+
+/**
  ** @desc    delete invitation by id
  ** @route   DELETE /api/invitations/:id
  ** @access  Private
@@ -254,5 +287,6 @@ module.exports = {
 	editInvitation,
 	deleteInvitation,
 	deleteAllInvitations,
-	getUserInvitations
+	getUserInvitations,
+	replyInvitation
 };

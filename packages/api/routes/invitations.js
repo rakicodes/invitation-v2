@@ -5,6 +5,7 @@ const {
   getInvitation,
   getUserInvitations,
   editInvitation,
+  replyInvitation,
   deleteInvitation,
   deleteAllInvitations,
 } = require("../controllers/invitations");
@@ -15,6 +16,7 @@ router.post("/", protect, createInvitation);
 router.get("/all", protect, getInvitations);
 router.get("/user/:id", protect, getUserInvitations);
 router.get("/:id", getInvitation);
+router.put("/reply/:id", replyInvitation);
 router.put("/:id", protect, editInvitation);
 router.delete("/:id", protect, deleteInvitation);
 router.delete("/", protect, deleteAllInvitations);
