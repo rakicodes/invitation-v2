@@ -26,7 +26,6 @@ const InvitationTemplate = ({
   
       setXPos(Math.abs(e.screenX - randomX))
       setYPos(Math.abs(e.screenY - randomY))
-      console.log(e)
     }
     setIsMouseover(true)
 

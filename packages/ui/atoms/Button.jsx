@@ -17,7 +17,7 @@ const Button = ({
       className={fullWidth ? "py-2 px-4 w-full rounded" : "py-2 px-4 rounded"}
       type={type}
       onClick={onClick}
-      onMouseOver={handleMouseover}
+      onMouseOver={isEffect ? handleMouseover : null}
       style={{
         color: fontColor,
         backgroundColor: backgroundColor,
