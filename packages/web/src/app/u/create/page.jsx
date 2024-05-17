@@ -53,7 +53,8 @@ const Page = () => {
       })
     })
     const data = await res.json()
-    router.push('/u/profile')
+    console.log(data)
+    router.push(`/u/${data._id}/share`)
   }
 
   return (

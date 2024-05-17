@@ -139,7 +139,7 @@ const CreateInvitationForm = ({
         selected={responseEffect}
       />
       <Button type="submit">
-        Create Invitation
+        Generate Link
       </Button>
     </form>
   );
