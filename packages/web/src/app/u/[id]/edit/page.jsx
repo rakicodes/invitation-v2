@@ -2,8 +2,8 @@
 
 import React, { useState, useEffect } from "react";
 import EditInvitationTemplate from "@ui/templates/EditInvitationTemplate";
-import responseEffects from "@/app/u/invitation/create/responseEffect";
-import visibilityInvitation from "@/app/u/invitation/create/visibilityInvitation";
+import responseEffects from "@/app/u/create/responseEffect";
+import visibilityInvitation from "@/app/u/create/visibilityInvitation";
 import LoadingTemplate from "@ui/templates/LoadingTemplate";
 import { getCookie } from "cookies-next";
 import { useRouter } from "next/navigation";

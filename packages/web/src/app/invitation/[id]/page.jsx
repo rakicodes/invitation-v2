@@ -26,6 +26,7 @@ const Page = async ({ params }) => {
 				buttonBackgroundColor={data.buttonBackgroundColor}
 				buttonFontColor={data.buttonFontColor}
 				responses={["yes", "no"]}
+				isEffect={[false, data.responseEffect]}
 			/>
 		</>
 	);

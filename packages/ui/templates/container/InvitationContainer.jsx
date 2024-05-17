@@ -8,6 +8,7 @@ const InvitationContainer = ({ backgroundColor, children, screen, full=false }) 
       }
       style={{
         backgroundColor: backgroundColor,
+        position: "relative"
       }}
     >
       {children}

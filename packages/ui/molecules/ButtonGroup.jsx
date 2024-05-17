@@ -1,5 +1,5 @@
 import Button from "../atoms/Button";
-const ButtonGroup = ({ texts, fontColor, backgroundColor, fullWidth }) => {
+const ButtonGroup = ({ texts, fontColor, backgroundColor, fullWidth, btnPos, isEffect, handleMouseover }) => {
   return (
     <div className="flex gap-2 justify-center">
       {texts.map((text, i) => (
@@ -8,6 +8,9 @@ const ButtonGroup = ({ texts, fontColor, backgroundColor, fullWidth }) => {
           fontColor={fontColor}
           backgroundColor={backgroundColor}
           fullWidth={fullWidth}
+          btnPos={btnPos}
+          isEffect={isEffect[i]}
+          handleMouseover={handleMouseover}
         >
           {text}
         </Button>
