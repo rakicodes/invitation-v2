@@ -23,55 +23,6 @@ const getInvitations = asyncHandler(async (req, res) => {
 });
 
 /**
- ** @desc    get all public invitations
- ** @route   GET /api/invitations
- ** @access  Public
- */
-const getPublicInvitations = asyncHandler(async (req, res) => {
-	try {
-		const invitations = await Invitation.find({ isPublic: true });
-
-		const publicInvitations = invitations.map((invitation) => {
-			const {
-				backgroundColor,
-				buttonBackgroundColor,
-				buttonFontColor,
-				failedImage,
-				failedMessage,
-        fontColor,
-        message,
-        messageImage,
-        responseEffect,
-        successImage,
-        successMessage,
-        user,
-        _id
-			} = invitation;
-			return {
-				backgroundColor,
-				buttonBackgroundColor,
-				buttonFontColor,
-				failedImage,
-				failedMessage,
-				fontColor,
-				message,
-				messageImage,
-				responseEffect,
-				successImage,
-				successMessage,
-				user,
-				_id,
-			};
-		});
-		res.status(200).json(publicInvitations);
-	} catch (error) {
-		res
-			.status(400)
-			.json("Sorry something went wrong. Couldn't get invitations");
-	}
-});
-
-/**
  ** @desc    get invitation by id
  ** @route   GET /api/invitations/:id
  ** @access  Public or Private
@@ -85,13 +36,7 @@ const getInvitation = asyncHandler(async (req, res) => {
 				.json("Sorry something went wrong. Couldn't get invitation");
 			return;
 		}
-
-		const { isPublic, user } = invitation;
-		if (isPublic || user.toString() === req.user.id) {
-			res.status(200).json(invitation);
-		} else {
-			res.status(401).json("Sorry can't access invitation");
-		}
+		res.status(200).json(invitation);
 	} catch (error) {
 		res.status(404).json("Sorry something went wrong. Couldn't get invitation");
 	}
@@ -288,7 +233,6 @@ const deleteAllInvitations = asyncHandler(async (req, res) => {
 
 module.exports = {
 	getInvitations,
-	getPublicInvitations,
 	getInvitation,
 	createInvitation,
 	editInvitation,

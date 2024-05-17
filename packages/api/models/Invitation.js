@@ -47,10 +47,6 @@ const Invitation = mongoose.Schema(
       type: Boolean,
       required: true,
     },
-    isPublic: {
-      type: Boolean,
-      required: true,
-    },
     backgroundColor: {
       type: String,
       required: true,

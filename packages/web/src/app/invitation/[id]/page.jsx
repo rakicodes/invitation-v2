@@ -1,20 +1,13 @@
 import InvitationTemplate from "@ui/templates/InvitationTemplate";
-import { cookies } from "next/headers";
 import { redirect } from 'next/navigation'
 
 const Page = async ({ params }) => {
 	const res = await fetch(
-		`http://localhost:3333/api/invitations/${params.id}`,
-		{
-			headers: {
-				Authorization: `Bearer ${JSON.parse(cookies().get('session').value).token}`,
-			},
-		}
+		`http://localhost:3333/api/invitations/${params.id}`
 	);
 	const data = await res.json();
-	if (res.status===401 || res.status===404) {
-		redirect("/")
-	}
+
+	
 	return (
 		<>
 			<InvitationTemplate
