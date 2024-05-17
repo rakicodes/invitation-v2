@@ -53,7 +53,7 @@ const Page = () => {
       })
     })
     const data = await res.json()
-    router.push('/profile')
+    router.push('/u/profile')
   }
 
   return (

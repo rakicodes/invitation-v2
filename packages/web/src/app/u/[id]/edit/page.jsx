@@ -93,7 +93,7 @@ const Page = ({ params }) => {
 			}),
 		});
 		const data = await res.json();
-    router.push('/profile')
+    router.push('/u/profile')
 	};
 
   if (isLoading) {
