@@ -43,6 +43,28 @@ const getInvitation = asyncHandler(async (req, res) => {
 });
 
 /**
+ ** @desc    get a users invitations
+ ** @route   GET /api/invitations/user/:id
+ ** @access  Private
+ */
+ const getUserInvitations = asyncHandler(async (req, res) => {
+	try {
+		console.log("user invite", req.params.id)
+		const invitation = await Invitation.find({ user: req.params.id });
+		console.log("invitations", invitation)
+		if (!invitation) {
+			res
+				.status(404)
+				.json("Sorry something went wrong. Couldn't get invitation");
+			return;
+		}
+		res.status(200).json(invitation);
+	} catch (error) {
+		res.status(404).json("Sorry something went wrong. Couldn't get invitation");
+	}
+});
+
+/**
  ** @desc    create invitation
  ** @route   POST /api/invitations
  ** @access  Private
@@ -234,4 +256,5 @@ module.exports = {
 	editInvitation,
 	deleteInvitation,
 	deleteAllInvitations,
+	getUserInvitations
 };

@@ -12,16 +12,16 @@ const Typography = ({
     {
       className:
         textCenter && fontSize === "sm"
-          ? "w-full text-center text-sm"
+          ? "w-full text-center text-sm truncate"
           : textCenter && fontSize === "lg"
-            ? "w-full text-center text-lg"
+            ? "w-full text-center text-lg truncate"
             : textCenter
-              ? "w-full text-center"
+              ? "w-full text-center truncate"
               : fontSize === "sm"
-                ? "w-full text-sm"
+                ? "w-full text-sm truncate"
                 : fontSize === "lg"
-                  ? "w-full text-lg"
-                  : "w-full",
+                  ? "w-full text-lg truncate"
+                  : "w-full truncate",
       style: { color: fontColor },
     },
     children,
