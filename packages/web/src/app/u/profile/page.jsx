@@ -26,8 +26,7 @@ const Page = () => {
 					router.push("/")
 					return
 				}
-				setData(data);
-        console.log("data",data)
+				setData(data.invitations);
 			} catch (error) {
 				console.log("error", error);
 			}

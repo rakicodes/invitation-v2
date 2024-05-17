@@ -8,7 +8,7 @@ const InvitationSummaryList = ({ data }) => {
 					<th className="md:w-1/2 text-left pl-4 truncate">Message</th>
 					<th className="text-right truncate">Recepient</th>
 					<th className="text-right truncate">Response</th>
-                    <th className="text-right pr-4 truncate">View</th>
+                    <th className="text-right pr-4 truncate">Links</th>
 				</tr>
 			</thead>
 			<tbody>

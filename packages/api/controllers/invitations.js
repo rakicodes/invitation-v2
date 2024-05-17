@@ -49,16 +49,14 @@ const getInvitation = asyncHandler(async (req, res) => {
  */
  const getUserInvitations = asyncHandler(async (req, res) => {
 	try {
-		console.log("user invite", req.params.id)
 		const invitation = await Invitation.find({ user: req.params.id });
-		console.log("invitations", invitation)
 		if (!invitation) {
 			res
 				.status(404)
 				.json("Sorry something went wrong. Couldn't get invitation");
 			return;
 		}
-		res.status(200).json(invitation);
+		res.status(200).json({ user: req.params.id, invitations: invitation });
 	} catch (error) {
 		res.status(404).json("Sorry something went wrong. Couldn't get invitation");
 	}
