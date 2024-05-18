@@ -1,33 +1,49 @@
-"use client"
+"use client";
 
-import Header from "@ui/organisms/Header"
-import HomeTemplate from "@ui/templates/HomeTemplate"
+import Header from "@ui/organisms/Header";
+import HomeTemplate from "@ui/templates/HomeTemplate";
 import { useRouter } from "next/navigation";
-import { useContext, useEffect, useState } from "react"
-import { CookieContext } from "./context/cookie"
+import { useEffect, useState } from "react";
+import Drawer from "@ui/organisms/Drawer";
+import { getCookie } from "cookies-next";
 
 export default function Home() {
-  const router = useRouter()
-  const cookie = useContext(CookieContext)
-  const [isLoggedIn, setIsLoggedIn] = useState(null)
+	const router = useRouter();
+	const [isLoggedIn, setIsLoggedIn] = useState(null);
+	const [isOpen, setIsOpen] = useState(true);
 
-  useEffect(() => {
-    setIsLoggedIn(cookie ? true : false)
-  }, [cookie])
+	useEffect(() => {
+		setIsLoggedIn(getCookie("session") ? true : false);
+	}, []);
 
-  const handleOpenMenu = () => {
-		console.log("opening");
+	const handleOpenMenu = () => {
+		setIsOpen(!isOpen);
 	};
 
-  const handleCTA = () => {
-    if (cookie) {
-      router.push("/u/create")
-    } else {
-      router.push("/u/login")
-    }
-  }
-  return <>
-      <Header isLoggedIn={isLoggedIn} handleOpenMenu={handleOpenMenu}/>
-      <HomeTemplate handleCTA={handleCTA}/>
-  </>;
+	const handleIsLoggedIn = () => {
+		setIsLoggedIn(getCookie("session") ? true : false);
+	};
+
+	const handleCTA = () => {
+		if (cookie) {
+			router.push("/u/create");
+		} else {
+			router.push("/u/login");
+		}
+	};
+	return (
+		<>
+			<Drawer
+				isLoggedIn={isLoggedIn}
+				isOpen={isOpen}
+				handleOpenMenu={handleOpenMenu}
+			/>
+			<Header
+				isLoggedIn={isLoggedIn}
+				handleOpenMenu={handleOpenMenu}
+				handleIsLoggedIn={handleIsLoggedIn}
+			/>
+			<HomeTemplate handleCTA={handleCTA} />
+		</>
+	);
 }

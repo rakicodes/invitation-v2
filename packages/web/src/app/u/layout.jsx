@@ -2,25 +2,31 @@
 
 import Header from "@ui/organisms/Header"
 import Drawer from "@ui/organisms/Drawer"
-import { CookieContext } from "../context/cookie"
-import { useContext, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
+import { getCookie } from "cookies-next"
+import { usePathname } from "next/navigation";
 
 const Layout = ({ children }) => {
-  const cookie = useContext(CookieContext)
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [isLoggedIn, setIsLoggedIn] = useState(null)
+  const [isOpen, setIsOpen] = useState(true)
+  const pathname = usePathname();
 
   useEffect(() => {
-    setIsLoggedIn(cookie ? true : false)
-  }, [cookie])
+    setIsLoggedIn(getCookie("session") ? true : false)
+  }, [pathname])
 
   const handleOpenMenu = () => {
-		console.log("opening");
+		setIsOpen(!isOpen)
 	};
+
+  const handleIsLoggedIn = () => {
+    setIsLoggedIn(getCookie("session") ? true : false)
+  }
 
   return (
     <>
-        <Header isLoggedIn={isLoggedIn} handleOpenMenu={handleOpenMenu}/>
-        <Drawer />
+        <Drawer isLoggedIn={isLoggedIn} isOpen={isOpen} handleOpenMenu={handleOpenMenu}/>
+        <Header isLoggedIn={isLoggedIn} handleOpenMenu={handleOpenMenu} handleIsLoggedIn={handleIsLoggedIn}/>
         {children}
     </>
   )

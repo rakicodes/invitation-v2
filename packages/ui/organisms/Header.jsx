@@ -6,34 +6,26 @@ import OutlineButton from "../atoms/OutlineButton";
 import CIcon from "@coreui/icons-react";
 import { cilHamburgerMenu } from "@coreui/icons";
 import { useRouter } from "next/navigation";
-import { getCookie, deleteCookie } from "cookies-next";
-import { useEffect, useState } from "react";
-import { usePathname } from "next/navigation";
+import { deleteCookie } from "cookies-next";
 
-const Header = ({ isLoggedIn, handleOpenMenu }) => {
+const Header = ({ isLoggedIn, handleIsLoggedIn, handleOpenMenu }) => {
 	const router = useRouter();
-	const pathname = usePathname();
-
-	useEffect(() => {}, [pathname, isLoggedIn]);
-
+	
 	const handleSignup = () => {
-		console.log("sign up..");
 		router.push("/u/signup");
 	};
 
 	const handleLogin = () => {
-		console.log("log in..");
 		router.push("/u/login");
 	};
 
 	const handleLogout = () => {
-		console.log("log out..");
 		deleteCookie("session");
+		handleIsLoggedIn()
 		router.push("/");
 	};
 
 	const handleProfile = () => {
-		console.log("profile...");
 		router.push("/u/profile");
 	};
 	return (
