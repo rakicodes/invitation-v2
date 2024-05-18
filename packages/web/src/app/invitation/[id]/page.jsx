@@ -1,10 +1,12 @@
 "use client"
 import { useEffect, useState } from "react"
 import InvitationTemplate from "@ui/templates/InvitationTemplate";
+import { useRouter } from "next/navigation"
 
 const Page = ({ params }) => {
 	const id = params.id
 	const [data, setData] = useState({})
+	const router = useRouter()
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -24,7 +26,6 @@ const Page = ({ params }) => {
 	}, [id]);
 
 	const handleNo = async () => {
-		console.log("no")
 		const res = await fetch(`http://localhost:3333/api/invitations/reply/${id}`, {
 			method: "PUT",
 			headers: {
@@ -34,10 +35,10 @@ const Page = ({ params }) => {
 				response: "no"
 			}),
 		});
+		router.push(`/invitation/${id}/reject`)
 	}
 
 	const handleYes = async () => {
-		console.log("yes")
 		const res = await fetch(`http://localhost:3333/api/invitations/reply/${id}`, {
 			method: "PUT",
 			headers: {
@@ -47,6 +48,7 @@ const Page = ({ params }) => {
 				response: "yes"
 			}),
 		});
+		router.push(`/invitation/${id}/success`)
 	}
 
 	return (
