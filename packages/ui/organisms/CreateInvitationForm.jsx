@@ -35,7 +35,7 @@ const CreateInvitationForm = ({
   step
 }) => {
   return (
-    <form className="flex flex-col gap-2 h-full justify-center" onSubmit={handleSubmit}>
+    <form className="flex flex-col gap-2 h-full" onSubmit={handleSubmit}>
       {
         step === 0 &&
         <>
@@ -57,56 +57,6 @@ const CreateInvitationForm = ({
         onChange={handleChangeImage}
         placeholder={preview.messageImage}
       />
-            <TextInputWithLabel
-        type="text"
-        label="recepient"
-        name="recepient"
-        required={true}
-        value={recepient}
-        onChange={handleChangerecepient}
-        placeholder={preview.recepient}
-      />
-      <div className="flex flex-wrap gap-2 w-full">
-        <ColorInputWithLabel
-          type="color"
-          label="Background Color"
-          name="backgroundColor"
-          required={true}
-          value={backgroundColor}
-          onChange={handleChangeBackgroundColor}
-        />
-        <ColorInputWithLabel
-          type="color"
-          label="Font Color"
-          name="fontColor"
-          required={true}
-          value={fontColor}
-          onChange={handleChangeFontColor}
-        />
-        <ColorInputWithLabel
-          type="color"
-          label="Button Background Color"
-          name="buttonBackgroundColor"
-          required={true}
-          value={buttonBackgroundColor}
-          onChange={handleChangeButtonBackgroundColor}
-        />
-        <ColorInputWithLabel
-          type="color"
-          label="Button Font Color"
-          name="buttonFontColor"
-          required={true}
-          value={buttonFontColor}
-          onChange={handleChangeButtonFontColor}
-        />
-      </div>
-
-      <RadioGroup
-        title="Response Effect?"
-        radios={responseEffectRadioGroup}
-        onChange={handleChangeResponseEffect}
-        selected={responseEffect}
-      /> 
         </>
       }
       {
@@ -154,11 +104,59 @@ const CreateInvitationForm = ({
         </>
       }
       {
-        step === 3 && <div className="flex flex-col gap-4">
+        step === 3 && <div className="flex flex-col gap-4 justify-between h-full">
           <div>
-          <Typography textCenter={true} fontSize="lg">You're all done!</Typography>
-        <Typography textCenter={true}>Here's a preview of your invitation!</Typography>
+          <TextInputWithLabel
+        type="text"
+        label="recepient"
+        name="recepient"
+        required={true}
+        value={recepient}
+        onChange={handleChangerecepient}
+        placeholder={preview.recepient}
+      />
+      <div className="flex flex-wrap gap-2 w-full">
+        <ColorInputWithLabel
+          type="color"
+          label="Background Color"
+          name="backgroundColor"
+          required={true}
+          value={backgroundColor}
+          onChange={handleChangeBackgroundColor}
+        />
+        <ColorInputWithLabel
+          type="color"
+          label="Font Color"
+          name="fontColor"
+          required={true}
+          value={fontColor}
+          onChange={handleChangeFontColor}
+        />
+        <ColorInputWithLabel
+          type="color"
+          label="Button Background Color"
+          name="buttonBackgroundColor"
+          required={true}
+          value={buttonBackgroundColor}
+          onChange={handleChangeButtonBackgroundColor}
+        />
+        <ColorInputWithLabel
+          type="color"
+          label="Button Font Color"
+          name="buttonFontColor"
+          required={true}
+          value={buttonFontColor}
+          onChange={handleChangeButtonFontColor}
+        />
+              <RadioGroup
+        title="Response Effect?"
+        radios={responseEffectRadioGroup}
+        onChange={handleChangeResponseEffect}
+        selected={responseEffect}
+      /> 
+      </div>
           </div>
+
       <Button type="submit">
         Generate Link
       </Button>
