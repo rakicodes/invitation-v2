@@ -24,6 +24,7 @@ const Page = ({ params }) => {
 	const [buttonFontColor, setButtonFontColor] = useState("#ffffff");
   const [isLoading, setIsLoading] = useState(true);
 	const router = useRouter();
+	const [step, setStep] = useState(0)
 
 	useEffect(() => {
 		if (!getCookie("session")) {
@@ -133,6 +134,8 @@ const Page = ({ params }) => {
 				}
 				handleChangeButtonFontColor={(e) => setButtonFontColor(e.target.value)}
 				handleSubmit={handleSubmit}
+				step={step}
+				handleStep={(x) => setStep(step+x)}		
 			/>
 		</>
 	);

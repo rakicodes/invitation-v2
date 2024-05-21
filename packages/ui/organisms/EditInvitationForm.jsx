@@ -2,6 +2,7 @@ import Button from "../atoms/Button";
 import TextInputWithLabel from "../molecules/TextInputWithLabel";
 import ColorInputWithLabel from "../molecules/ColorInputWithLabel";
 import RadioGroup from "../molecules/RadioGroup";
+import Typography from "../atoms/Typography";
 
 const EditInvitationForm = ({
   message,
@@ -29,11 +30,15 @@ const EditInvitationForm = ({
   handleChangeFontColor,
   handleChangeButtonBackgroundColor,
   handleChangeButtonFontColor,
-  handleSubmit
+  handleSubmit,
+  step
 }) => {
   return (
-    <form className="flex flex-col gap-2" onSubmit={handleSubmit}>
-      <TextInputWithLabel
+    <form className="flex flex-col gap-2 h-full justify-center" onSubmit={handleSubmit}>
+      {
+        step === 0 &&
+        <>
+<TextInputWithLabel
         type="text"
         label="Message"
         name="message"
@@ -49,42 +54,10 @@ const EditInvitationForm = ({
         value={image}
         onChange={handleChangeImage}
       />
-      <TextInputWithLabel
+            <TextInputWithLabel
         type="text"
-        label="Success Message"
-        name="successMessage"
-        required={true}
-        value={successMessage}
-        onChange={handleChangeSuccessMessage}
-      />
-      <TextInputWithLabel
-        type="text"
-        label="Success Image URL "
-        name="successImage"
-        required={true}
-        value={successImage}
-        onChange={handleChangeSuccessImage}
-      />
-      <TextInputWithLabel
-        type="text"
-        label="Failed Message"
-        name="failedMessage"
-        required={true}
-        value={failedMessage}
-        onChange={handleChangeFailedMessage}
-      />
-      <TextInputWithLabel
-        type="text"
-        label="Failed Image"
-        name="failedImage"
-        required={true}
-        value={failedImage}
-        onChange={handleChangeFailedImage}
-      />
-      <TextInputWithLabel
-        type="text"
-        label="Recepient"
-        name="Recepient"
+        label="recepient"
+        name="recepient"
         required={true}
         value={recepient}
         onChange={handleChangeRecepient}
@@ -129,10 +102,61 @@ const EditInvitationForm = ({
         radios={responseEffectRadioGroup}
         onChange={handleChangeResponseEffect}
         selected={responseEffect}
+      /> 
+        </>
+      }
+      {
+        step === 1 && <>
+        <TextInputWithLabel
+        type="text"
+        label="Success Message"
+        name="successMessage"
+        required={true}
+        value={successMessage}
+        onChange={handleChangeSuccessMessage}
       />
+      <TextInputWithLabel
+        type="text"
+        label="Success Image URL "
+        name="successImage"
+        required={true}
+        value={successImage}
+        onChange={handleChangeSuccessImage}
+      />
+        </>
+      }
+      {
+        step === 2 && <>
+              <TextInputWithLabel
+        type="text"
+        label="Failed Message"
+        name="failedMessage"
+        required={true}
+        value={failedMessage}
+        onChange={handleChangeFailedMessage}
+      />
+      <TextInputWithLabel
+        type="text"
+        label="Failed Image"
+        name="failedImage"
+        required={true}
+        value={failedImage}
+        onChange={handleChangeFailedImage}
+      />
+        </>
+      }
+      {
+        step === 3 && <div className="flex flex-col gap-4">
+          <div>
+          <Typography textCenter={true} fontSize="lg">You're all done!</Typography>
+        <Typography textCenter={true}>Here's a preview of your invitation!</Typography>
+          </div>
       <Button type="submit">
-        Save Changes
+        Generate Link
       </Button>
+      </div>
+      }
+
     </form>
   );
 };
