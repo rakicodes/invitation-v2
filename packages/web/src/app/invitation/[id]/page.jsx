@@ -50,7 +50,7 @@ const Page = ({ params }) => {
 		});
 		router.push(`/invitation/${id}/success`)
 	}
-
+	console.log(data)
 	return (
 		<>
 			<InvitationTemplate

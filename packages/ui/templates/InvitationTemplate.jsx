@@ -29,7 +29,6 @@ const InvitationTemplate = ({
     }
     setIsMouseover(true);
   };
-
   return (
     <div className="min-h-screen">
       <InvitationView
@@ -44,7 +43,7 @@ const InvitationTemplate = ({
         screen={true}
         handleMouseover={handleMouseover}
         btnPos={[`${xPos}px`, `${yPos}px`]}
-        isEffect={[false, isEffect && isMouseover]}
+        isEffect={[isEffect[0], isEffect[1] && isMouseover]}
         handleResponses={handleResponses}
       />
     </div>
