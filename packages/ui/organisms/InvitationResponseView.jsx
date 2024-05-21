@@ -8,11 +8,15 @@ const InvitationResponseView = ({
   imgAlt,
   backgroundColor,
   fontColor,
-  screen=false,
-  full
+  screen = false,
+  full,
 }) => {
   return (
-    <InvitationContainer backgroundColor={backgroundColor} screen={screen} full={full}>
+    <InvitationContainer
+      backgroundColor={backgroundColor}
+      screen={screen}
+      full={full}
+    >
       <Typography fontColor={fontColor} textCenter={true} fontSize="lg">
         {message}
       </Typography>

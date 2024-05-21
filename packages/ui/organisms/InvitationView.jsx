@@ -17,10 +17,14 @@ const InvitationView = ({
   btnPos,
   isEffect,
   handleMouseover,
-  handleResponses
+  handleResponses,
 }) => {
   return (
-    <InvitationContainer backgroundColor={backgroundColor} screen={screen} full={full}>
+    <InvitationContainer
+      backgroundColor={backgroundColor}
+      screen={screen}
+      full={full}
+    >
       <Typography fontColor={fontColor} textCenter={true} fontSize="lg">
         {message}
       </Typography>

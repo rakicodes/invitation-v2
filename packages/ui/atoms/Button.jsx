@@ -25,7 +25,7 @@ const Button = ({
         backgroundColor: backgroundColor,
         position: isEffect ? "fixed" : "relative",
         left: isEffect ? btnPos[0] : 0,
-        top: isEffect ? btnPos[1] : 0
+        top: isEffect ? btnPos[1] : 0,
       }}
     >
       {children}

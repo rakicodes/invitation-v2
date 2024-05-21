@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
 import InvitationView from "../organisms/InvitationView";
-import { useState } from "react"
+import { useState } from "react";
 
 const InvitationTemplate = ({
   message,
@@ -13,23 +13,22 @@ const InvitationTemplate = ({
   buttonBackgroundColor,
   buttonFontColor,
   isEffect,
-  handleResponses
+  handleResponses,
 }) => {
-  const [xPos, setXPos] = useState("0px")
-	const [yPos, setYPos] = useState("0px")
-  const [isMouseover, setIsMouseover] = useState(false)
+  const [xPos, setXPos] = useState("0px");
+  const [yPos, setYPos] = useState("0px");
+  const [isMouseover, setIsMouseover] = useState(false);
 
   const handleMouseover = (e) => {
     if (e.target.id) {
       const randomX = Math.random() * window.innerWidth;
       const randomY = Math.random() * window.innerHeight;
-  
-      setXPos(Math.abs(e.screenX - randomX))
-      setYPos(Math.abs(e.screenY - randomY))
-    }
-    setIsMouseover(true)
 
-  }
+      setXPos(Math.abs(e.screenX - randomX));
+      setYPos(Math.abs(e.screenY - randomY));
+    }
+    setIsMouseover(true);
+  };
 
   return (
     <div className="min-h-screen">

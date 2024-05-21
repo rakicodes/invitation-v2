@@ -26,9 +26,7 @@ const LoginForm = ({
         value={password}
         onChange={handleChangePassword}
       />
-      <Button type="submit">
-        Log In
-      </Button>
+      <Button type="submit">Log In</Button>
     </form>
   );
 };
