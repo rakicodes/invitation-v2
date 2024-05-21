@@ -36,7 +36,7 @@ const EditInvitationTemplate = ({
   handleStep,
 }) => {
   return (
-    <div className="flex items-center justify-center">
+    <div className="flex items-center justify-center bg-white">
       <div className="flex flex-wrap gap-2 p-2 relative max-w-4xl">
         <div className="w-full pb-2">
           <Typography fontSize="lg" textCenter={true}>
