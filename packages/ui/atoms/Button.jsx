@@ -9,7 +9,8 @@ const Button = ({
   backgroundColor = "#b25674",
   btnPos = ["0px", "0px"],
   isEffect,
-  handleMouseover
+  handleMouseover,
+  disabled = false,
 }) => {
   return (
     <button
@@ -18,6 +19,7 @@ const Button = ({
       type={type}
       onClick={onClick}
       onMouseOver={isEffect ? handleMouseover : null}
+      disabled={disabled}
       style={{
         color: fontColor,
         backgroundColor: backgroundColor,

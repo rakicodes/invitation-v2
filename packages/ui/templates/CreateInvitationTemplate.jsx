@@ -2,6 +2,7 @@ import CreateInvitationForm from "../organisms/CreateInvitationForm";
 import InvitationView from "../organisms/InvitationView";
 import InvitationResponseView from "../organisms/InvitationResponseView";
 import Typography from "../atoms/Typography";
+import Button from "../atoms/Button";
 
 const CreateInvitationTemplate = ({
   message,
@@ -31,11 +32,13 @@ const CreateInvitationTemplate = ({
   handleChangeButtonFontColor,
   handleSubmit,
   preview,
+  step,
+  handleStep
 }) => {
   return (
-    <div className="flex flex-wrap gap-2 p-2 relative">
-      <div className="w-full grow sm:w-1/3">
-        <div className="pb-2">
+    <div className="flex items-center justify-center">
+    <div className="flex flex-wrap gap-2 p-2 relative max-w-4xl">
+        <div className="w-full pb-2">
           <Typography fontSize="lg" textCenter={true}>
             Create your invitation
           </Typography>
@@ -43,6 +46,7 @@ const CreateInvitationTemplate = ({
             Fill out the fields below
           </Typography>
         </div>
+      <div className="w-full grow sm:w-1/3 min-h-[488px]">
         <CreateInvitationForm
           message={message}
           image={image}
@@ -71,58 +75,136 @@ const CreateInvitationTemplate = ({
           handleChangeButtonFontColor={handleChangeButtonFontColor}
           handleSubmit={handleSubmit}
           preview={preview}
+          step={step}
         />
       </div>
-      <div className="flex w-full grow self-baseline sm:w-1/3">
-        <div className="flex flex-wrap gap-2 sm:pr-2 sm:fixed">
+      <div className="flex w-full grow self-stretch sm:w-1/3 min-h-[488px]">
+        <div className="flex flex-wrap w-1/2 gap-2 w-full grow">
           <div className="w-full">
-            <Typography element="h3">Message Preview</Typography>
-
-            <InvitationView
-              message={message ? message : preview.message}
-              imgUrl={image ? image : preview.messageImage}
-              imgAlt="Invitation image"
-              backgroundColor={
-                backgroundColor ? backgroundColor : preview.backgroundColor
-              }
-              fontColor={fontColor ? fontColor : preview.fontColor}
-              buttonBackgroundColor={
-                buttonBackgroundColor
-                  ? buttonBackgroundColor
-                  : preview.buttonBackgroundColor
-              }
-              buttonFontColor={
-                buttonFontColor ? buttonFontColor : preview.buttonFontColor
-              }
-              responses={["yes", "no"]}
-            />
-          </div>
-          <div className="w-full grow sm:w-1/3">
-            <Typography element="h3">If yes:</Typography>
-            <InvitationResponseView
-              message={successMessage ? successMessage : preview.successMessage}
-              imgUrl={successImage ? successImage : preview.successImage}
-              imgAlt="Invitation image"
-              backgroundColor={
-                backgroundColor ? backgroundColor : preview.backgroundColor
-              }
-              fontColor={fontColor ? fontColor : preview.fontColor}
-            />
-          </div>
-          <div className="w-full grow sm:w-1/3">
-            <Typography element="h3">If no:</Typography>
-            <InvitationResponseView
-              message={failedMessage ? failedMessage : preview.failedMessage}
-              imgUrl={failedImage ? failedImage : preview.failedImage}
-              imgAlt="Invitation image"
-              backgroundColor={
-                backgroundColor ? backgroundColor : preview.backgroundColor
-              }
-              fontColor={fontColor ? fontColor : preview.fontColor}
-            />
+            {
+              step === 0 &&
+              <InvitationView
+                message={message ? message : preview.message}
+                imgUrl={image ? image : preview.messageImage}
+                imgAlt="Invitation image"
+                backgroundColor={
+                  backgroundColor ? backgroundColor : preview.backgroundColor
+                }
+                fontColor={fontColor ? fontColor : preview.fontColor}
+                buttonBackgroundColor={
+                  buttonBackgroundColor
+                    ? buttonBackgroundColor
+                    : preview.buttonBackgroundColor
+                }
+                buttonFontColor={
+                  buttonFontColor ? buttonFontColor : preview.buttonFontColor
+                }
+                responses={["yes", "no"]}
+                full={true}
+              />
+            }
+            {
+              step === 1 &&
+              <InvitationResponseView
+                message={successMessage ? successMessage : preview.successMessage}
+                imgUrl={successImage ? successImage : preview.successImage}
+                imgAlt="Invitation image"
+                backgroundColor={
+                  backgroundColor ? backgroundColor : preview.backgroundColor
+                }
+                fontColor={fontColor ? fontColor : preview.fontColor}
+                full={true}
+              />
+            }
+            {
+              step === 2 &&
+              <InvitationResponseView
+                message={failedMessage ? failedMessage : preview.failedMessage}
+                imgUrl={failedImage ? failedImage : preview.failedImage}
+                imgAlt="Invitation image"
+                backgroundColor={
+                  backgroundColor ? backgroundColor : preview.backgroundColor
+                }
+                fontColor={fontColor ? fontColor : preview.fontColor}
+                full={true}
+              />
+            }
+            {
+              step === 3 && <div className="flex flex-col gap-2">
+              <InvitationView
+                message={message ? message : preview.message}
+                imgUrl={image ? image : preview.messageImage}
+                imgAlt="Invitation image"
+                backgroundColor={
+                  backgroundColor ? backgroundColor : preview.backgroundColor
+                }
+                fontColor={fontColor ? fontColor : preview.fontColor}
+                buttonBackgroundColor={
+                  buttonBackgroundColor
+                    ? buttonBackgroundColor
+                    : preview.buttonBackgroundColor
+                }
+                buttonFontColor={
+                  buttonFontColor ? buttonFontColor : preview.buttonFontColor
+                }
+                responses={["yes", "no"]}
+                screen={false}
+              />
+              <div className="flex gap-x-2">
+                <div className="w-1/2 grow self-stretch">
+                <InvitationResponseView
+                message={successMessage ? successMessage : preview.successMessage}
+                imgUrl={successImage ? successImage : preview.successImage}
+                imgAlt="Invitation image"
+                backgroundColor={
+                  backgroundColor ? backgroundColor : preview.backgroundColor
+                }
+                fontColor={fontColor ? fontColor : preview.fontColor}
+                screen={false}
+                full={true}
+              />
+                </div>
+                <div className="w-1/2 grow self-stretch">
+                <InvitationResponseView
+                message={failedMessage ? failedMessage : preview.failedMessage}
+                imgUrl={failedImage ? failedImage : preview.failedImage}
+                imgAlt="Invitation image"
+                backgroundColor={
+                  backgroundColor ? backgroundColor : preview.backgroundColor
+                }
+                fontColor={fontColor ? fontColor : preview.fontColor}
+                screen={false}
+                full={true}
+              />
+                </div>
+              
+              
+              </div>
+              </div>
+            }
           </div>
         </div>
       </div>
+      <div className="w-full flex gap-2 items-center justify-between">
+          <div>
+            {
+              step > 0 ?
+                <Button onClick={() => handleStep(-1)}>Prev</Button> :
+                <Button disabled={true} backgroundColor="#f3ccd9">Prev</Button>
+            }
+          </div>
+          <div>
+            <Typography>{step+1} / 4</Typography>
+          </div>
+          <div>
+            {
+              step < 3 ?
+              <Button onClick={() => handleStep(1)}>Next</Button> :
+              <Button disabled={true} backgroundColor="#f3ccd9">Next</Button>
+            }
+          </div>
+      </div>
+    </div>
     </div>
   );
 };

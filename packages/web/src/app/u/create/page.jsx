@@ -22,6 +22,7 @@ const Page = () => {
   const [buttonBackgroundColor, setButtonBackgroundColor] = useState(sampleInvitation.buttonBackgroundColor)
   const [buttonFontColor, setButtonFontColor] = useState(sampleInvitation.buttonFontColor)
   const router = useRouter()
+  const [step, setStep] = useState(0)
 
   useEffect(() => {
 		if (!getCookie("session")) {
@@ -87,6 +88,8 @@ const Page = () => {
         handleChangeButtonFontColor={(e) => setButtonFontColor(e.target.value)}
         handleSubmit={handleSubmit}
         preview={sampleInvitation}
+        step={step}
+        handleStep={(x) => setStep(step+x)}
       />
     </>
   )
