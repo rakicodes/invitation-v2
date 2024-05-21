@@ -25,7 +25,7 @@ export default function Home() {
   };
 
   const handleCTA = () => {
-    if (cookie) {
+    if (getCookie("session")) {
       router.push("/u/create");
     } else {
       router.push("/u/login");
