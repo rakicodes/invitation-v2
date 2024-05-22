@@ -4,6 +4,8 @@ import ColorInputWithLabel from "../molecules/ColorInputWithLabel";
 import RadioGroup from "../molecules/RadioGroup";
 import Typography from "../atoms/Typography";
 import SearchGiphy from "./SearchGiphy";
+import CIcon from "@coreui/icons-react";
+import { cilWarning } from "@coreui/icons";
 
 const EditInvitationForm = ({
   message,
@@ -51,7 +53,7 @@ const EditInvitationForm = ({
   error
 }) => {
   return (
-    <form className="flex flex-col gap-2 h-full" onSubmit={handleSubmit}>
+    <form className="flex flex-col gap-2 h-full" onSubmit={handleSubmit} noValidate>
       {step === 0 && (
         <>
           <TextInputWithLabel

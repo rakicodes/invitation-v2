@@ -99,6 +99,11 @@ const createInvitation = asyncHandler(async (req, res) => {
       return;
     }
 
+    if (!recepient) {
+      res.status(400).json("Please add recepient");
+      return;
+    }
+
     const invitation = await Invitation.create({
       user: req.user.id,
       message: message,
@@ -166,6 +171,11 @@ const editInvitation = asyncHandler(async (req, res) => {
 
     if (!messageImage || !successImage || !failedImage) {
       res.status(400).json("Please make sure all 3 images are provided");
+      return;
+    }
+
+    if (!recepient) {
+      res.status(400).json("Please add recepient");
       return;
     }
 
