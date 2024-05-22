@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 
 const connectDB = async () => {
+  console.log(process.env.NODE_ENV, process.env.DB_PROD_STRING)
   try {
     await mongoose.connect(
       process.env.NODE_ENV === "dev"
