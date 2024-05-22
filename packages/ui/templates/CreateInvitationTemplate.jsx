@@ -38,14 +38,17 @@ const CreateInvitationTemplate = ({
   handleMessageSearch,
   handleSubmitMessageSearch,
   messageSearchData,
+  handleSearchMessageSelect,
   successMessageSearch,
   handleSuccessMessageSearch,
   handleSubmitSuccessMessageSearch,
   successMessageSearchData,
+  handleSearchSuccessMessageSelect,
   failedMessageSearch,
   handleFailedMessageSearch,
   handleSubmitFailedMessageSearch,
   failedMessageSearchData,
+  handleSearchFailedMessageSelect
 }) => {
   return (
     <div className="flex items-center justify-center bg-white">
@@ -94,15 +97,17 @@ const CreateInvitationTemplate = ({
             handleMessageSearch={handleMessageSearch}
             handleSubmitMessageSearch={handleSubmitMessageSearch}
             messageSearchData={messageSearchData}
+            handleSearchMessageSelect={handleSearchMessageSelect}
             successMessageSearch={successMessageSearch}
             handleSuccessMessageSearch={handleSuccessMessageSearch}
             handleSubmitSuccessMessageSearch={handleSubmitSuccessMessageSearch}
             successMessageSearchData={successMessageSearchData}
+            handleSearchSuccessMessageSelect={handleSearchSuccessMessageSelect}
             failedMessageSearch={failedMessageSearch}
             handleFailedMessageSearch={handleFailedMessageSearch}
             handleSubmitFailedMessageSearch={handleSubmitFailedMessageSearch}
             failedMessageSearchData={failedMessageSearchData}
-
+            handleSearchFailedMessageSelect={handleSearchFailedMessageSelect}
           />
         </div>
         <div className="flex w-full grow self-stretch sm:w-1/3 min-h-[488px]">

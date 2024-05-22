@@ -38,14 +38,17 @@ const CreateInvitationForm = ({
   handleMessageSearch,
   handleSubmitMessageSearch,
   messageSearchData,
+  handleSearchMessageSelect,
   successMessageSearch,
   handleSuccessMessageSearch,
   handleSubmitSuccessMessageSearch,
   successMessageSearchData,
+  handleSearchSuccessMessageSelect,
   failedMessageSearch,
   handleFailedMessageSearch,
   handleSubmitFailedMessageSearch,
   failedMessageSearchData,
+  handleSearchFailedMessageSelect
 }) => {
   return (
     <form className="flex flex-col gap-2 h-full" onSubmit={handleSubmit}>
@@ -74,6 +77,7 @@ const CreateInvitationForm = ({
             search={messageSearch} 
             handleChange={handleMessageSearch} 
             handleSubmit={handleSubmitMessageSearch}
+            handleSelectImg={handleSearchMessageSelect}
           />
         </>
       )}
@@ -102,6 +106,7 @@ const CreateInvitationForm = ({
             search={successMessageSearch} 
             handleChange={handleSuccessMessageSearch} 
             handleSubmit={handleSubmitSuccessMessageSearch}
+            handleSelectImg={handleSearchSuccessMessageSelect}
           />
         </>
       )}
@@ -130,6 +135,7 @@ const CreateInvitationForm = ({
             search={failedMessageSearch} 
             handleChange={handleFailedMessageSearch} 
             handleSubmit={handleSubmitFailedMessageSearch}
+            handleSelectImg={handleSearchFailedMessageSelect}
           />
         </>
       )}

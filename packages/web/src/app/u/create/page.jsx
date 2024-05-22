@@ -68,7 +68,7 @@ const Page = () => {
     const res = await fetch(`https://api.giphy.com/v1/stickers/search?api_key=${process.env.NEXT_PUBLIC_GIPHY_KEY}&q=${messageSearch}&limit=6`)
     const data = await res.json()
     console.log(data)
-    setMessageSearchData(data)
+    setMessageSearchData(data.data)
   }
 
   const handleSubmitSuccessMessageSearch = async (e) => {
@@ -76,7 +76,7 @@ const Page = () => {
     const res = await fetch(`https://api.giphy.com/v1/stickers/search?api_key=${process.env.NEXT_PUBLIC_GIPHY_KEY}&q=${successMessageSearch}&limit=6`)
     const data = await res.json()
     console.log(data)
-    setSuccessMessageSearchData(data)
+    setSuccessMessageSearchData(data.data)
   }
 
   const handleSubmitFailedMessageSearch = async (e) => {
@@ -84,7 +84,19 @@ const Page = () => {
     const res = await fetch(`https://api.giphy.com/v1/stickers/search?api_key=${process.env.NEXT_PUBLIC_GIPHY_KEY}&q=${failedMessageSearch}&limit=6`)
     const data = await res.json()
     console.log(data)
-    setFailedMessageSearchData(data)
+    setFailedMessageSearchData(data.data)
+  }
+
+  const handleSearchMessageSelect = (e) => {
+    setImage(e.target.src)
+  }
+
+  const handleSearchSuccessMessageSelect = (e) => {
+    setSuccessImage(e.target.src)
+  }
+
+  const handleSearchFailedMessageSelect = (e) => {
+    setFailedImage(e.target.src)
   }
 
   return (
@@ -123,14 +135,17 @@ const Page = () => {
         handleMessageSearch={(e) => setMessageSearch(e.target.value)}
         handleSubmitMessageSearch={handleSubmitMessageSearch}
         messageSearchData={messageSearchData}
+        handleSearchMessageSelect={handleSearchMessageSelect}
         successMessageSearch={successMessageSearch}
         handleSuccessMessageSearch={(e) => setSuccessMessageSearch(e.target.value)}
         handleSubmitSuccessMessageSearch={handleSubmitSuccessMessageSearch}
         successMessageSearchData={successMessageSearchData}
+        handleSearchSuccessMessageSelect={handleSearchSuccessMessageSelect}
         failedMessageSearch={failedMessageSearch}
         handleFailedMessageSearch={(e) => setFailedMessageSearch(e.target.value)}
         handleSubmitFailedMessageSearch={handleSubmitFailedMessageSearch}
         failedMessageSearchData={failedMessageSearchData}
+        handleSearchFailedMessageSelect={handleSearchFailedMessageSelect}
 
       />
     </>
