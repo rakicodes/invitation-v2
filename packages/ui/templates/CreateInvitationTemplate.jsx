@@ -49,6 +49,7 @@ const CreateInvitationTemplate = ({
   handleSubmitFailedMessageSearch,
   failedMessageSearchData,
   handleSearchFailedMessageSelect,
+  error
 }) => {
   return (
     <div className="flex items-center justify-center bg-white w-screen grow">
@@ -108,6 +109,7 @@ const CreateInvitationTemplate = ({
             handleSubmitFailedMessageSearch={handleSubmitFailedMessageSearch}
             failedMessageSearchData={failedMessageSearchData}
             handleSearchFailedMessageSelect={handleSearchFailedMessageSelect}
+            error={error}
           />
         </div>
         <div className="flex w-full grow self-stretch sm:w-1/3 min-h-[488px]">
@@ -187,8 +189,8 @@ const CreateInvitationTemplate = ({
                     responses={["yes", "no"]}
                     screen={false}
                   />
-                  <div className="flex gap-x-2">
-                    <div className="w-1/2 grow self-stretch">
+                  <div className="flex gap-x-2 w-full">
+                    <div className="w-1/3 grow self-stretch">
                       <InvitationResponseView
                         message={
                           successMessage
@@ -209,7 +211,7 @@ const CreateInvitationTemplate = ({
                         full={true}
                       />
                     </div>
-                    <div className="w-1/2 grow self-stretch">
+                    <div className="w-1/3 grow self-stretch">
                       <InvitationResponseView
                         message={
                           failedMessage ? failedMessage : preview.failedMessage

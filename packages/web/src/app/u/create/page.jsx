@@ -29,6 +29,7 @@ const Page = () => {
   const [successMessageSearchData, setSuccessMessageSearchData] = useState([])
   const [failedMessageSearch, setFailedMessageSearch] = useState("")
   const [failedMessageSearchData, setFailedMessageSearchData] = useState([])
+  const [error, setError] = useState("")
 
   useEffect(() => {
 		if (!getCookie("session")) {
@@ -59,8 +60,13 @@ const Page = () => {
         buttonFontColor
       })
     })
+    console.log("r",res)
     const data = await res.json()
-    router.push(`/u/${data._id}/share`)
+    if (res.status === 201) {
+      router.push(`/u/${data._id}/share`)
+    } else {
+      setError(data)
+    }
   }
 
   const handleSubmitMessageSearch = async (e) => {
@@ -146,7 +152,7 @@ const Page = () => {
         handleSubmitFailedMessageSearch={handleSubmitFailedMessageSearch}
         failedMessageSearchData={failedMessageSearchData}
         handleSearchFailedMessageSelect={handleSearchFailedMessageSelect}
-
+        error={error}
       />
     </>
   )

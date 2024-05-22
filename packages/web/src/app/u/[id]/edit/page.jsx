@@ -30,7 +30,8 @@ const Page = ({ params }) => {
 	const [successMessageSearch, setSuccessMessageSearch] = useState("")
 	const [successMessageSearchData, setSuccessMessageSearchData] = useState([])
 	const [failedMessageSearch, setFailedMessageSearch] = useState("")
-	const [failedMessageSearchData, setFailedMessageSearchData] = useState([])  
+	const [failedMessageSearchData, setFailedMessageSearchData] = useState([]) 
+	const [error, setError] = useState("")
 
 	useEffect(() => {
 		if (!getCookie("session")) {
@@ -100,7 +101,11 @@ const Page = ({ params }) => {
 			}),
 		});
 		const data = await res.json();
-    router.push('/u/profile')
+		if (res.status===201) {
+			router.push('/u/profile')
+		} else {
+			setError(data)
+		}
 	};
 
 	const handleSubmitMessageSearch = async (e) => {
@@ -192,7 +197,8 @@ const Page = ({ params }) => {
 				handleFailedMessageSearch={(e) => setFailedMessageSearch(e.target.value)}
 				handleSubmitFailedMessageSearch={handleSubmitFailedMessageSearch}
 				failedMessageSearchData={failedMessageSearchData}
-				handleSearchFailedMessageSelect={handleSearchFailedMessageSelect}		
+				handleSearchFailedMessageSelect={handleSearchFailedMessageSelect}	
+				error={error}	
 			/>
 		</>
 	);

@@ -49,6 +49,7 @@ const EditInvitationTemplate = ({
   handleSubmitFailedMessageSearch,
   failedMessageSearchData,
   handleSearchFailedMessageSelect,
+  error
 }) => {
   return (
     <div className="flex items-center justify-center bg-white grow">
@@ -107,6 +108,7 @@ const EditInvitationTemplate = ({
             handleSubmitFailedMessageSearch={handleSubmitFailedMessageSearch}
             failedMessageSearchData={failedMessageSearchData}
             handleSearchFailedMessageSelect={handleSearchFailedMessageSelect}
+            error={error}
           />
         </div>
         <div className="flex w-full grow self-stretch sm:w-1/3 min-h-[488px]">
@@ -159,7 +161,7 @@ const EditInvitationTemplate = ({
                     screen={false}
                   />
                   <div className="flex gap-x-2">
-                    <div className="w-1/2 grow self-stretch">
+                    <div className="w-1/3 grow self-stretch">
                       <InvitationResponseView
                         message={successMessage}
                         imgUrl={successImage}
@@ -170,7 +172,7 @@ const EditInvitationTemplate = ({
                         full={true}
                       />
                     </div>
-                    <div className="w-1/2 grow self-stretch">
+                    <div className="w-1/3 grow self-stretch">
                       <InvitationResponseView
                         message={failedMessage}
                         imgUrl={failedImage}

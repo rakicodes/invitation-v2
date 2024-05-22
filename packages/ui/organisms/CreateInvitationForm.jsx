@@ -4,6 +4,9 @@ import ColorInputWithLabel from "../molecules/ColorInputWithLabel";
 import RadioGroup from "../molecules/RadioGroup";
 import Typography from "../atoms/Typography";
 import SearchGiphy from "./SearchGiphy";
+import CIcon from "@coreui/icons-react";
+import { cilWarning } from "@coreui/icons";
+
 
 const CreateInvitationForm = ({
   message,
@@ -49,9 +52,10 @@ const CreateInvitationForm = ({
   handleSubmitFailedMessageSearch,
   failedMessageSearchData,
   handleSearchFailedMessageSelect,
+  error
 }) => {
   return (
-    <form className="flex flex-col gap-2 h-full" onSubmit={handleSubmit}>
+    <form className="flex flex-col gap-2 h-full" onSubmit={handleSubmit} noValidate>
       {step === 0 && (
         <>
           <TextInputWithLabel
@@ -70,7 +74,6 @@ const CreateInvitationForm = ({
             required={true}
             value={image}
             onChange={handleChangeImage}
-            placeholder={preview.messageImage}
           />
           <SearchGiphy
             data={messageSearchData}
@@ -99,7 +102,6 @@ const CreateInvitationForm = ({
             required={true}
             value={successImage}
             onChange={handleChangeSuccessImage}
-            placeholder={preview.successImage}
           />
           <SearchGiphy
             data={successMessageSearchData}
@@ -128,7 +130,6 @@ const CreateInvitationForm = ({
             required={true}
             value={failedImage}
             onChange={handleChangeFailedImage}
-            placeholder={preview.failedImage}
           />
           <SearchGiphy
             data={failedMessageSearchData}
@@ -149,7 +150,6 @@ const CreateInvitationForm = ({
               required={true}
               value={recepient}
               onChange={handleChangerecepient}
-              placeholder={preview.recepient}
             />
             <div className="flex flex-wrap gap-2 w-full">
               <ColorInputWithLabel
@@ -192,8 +192,21 @@ const CreateInvitationForm = ({
               />
             </div>
           </div>
-
-          <Button type="submit">Generate Link</Button>
+          <div className="flex flex-col gap-2">
+            {
+              error && 
+              <div className="gap-4 flex flex-wrap items-center bg-lightpink text-white rounded-lg p-4">
+                <div className="w-6 flex">
+                  <CIcon icon={cilWarning} />
+                </div>
+                <div className="flex flex-wrap grow">
+                  <Typography>{error}</Typography>
+                </div>
+              </div>
+            }
+            
+            <Button type="submit">Generate Link</Button>
+          </div>
         </div>
       )}
     </form>

@@ -48,6 +48,7 @@ const EditInvitationForm = ({
   handleSubmitFailedMessageSearch,
   failedMessageSearchData,
   handleSearchFailedMessageSelect,
+  error
 }) => {
   return (
     <form className="flex flex-col gap-2 h-full" onSubmit={handleSubmit}>
@@ -184,7 +185,21 @@ const EditInvitationForm = ({
               />
             </div>
           </div>
-          <Button type="submit">Generate Link</Button>
+          <div className="flex flex-col gap-2">
+            {
+              error && 
+              <div className="gap-4 flex flex-wrap items-center bg-lightpink text-white rounded-lg p-4">
+                <div className="w-6 flex">
+                  <CIcon icon={cilWarning} />
+                </div>
+                <div className="flex flex-wrap grow">
+                  <Typography>{error}</Typography>
+                </div>
+              </div>
+            }
+            
+            <Button type="submit">Save Changes</Button>
+          </div>
         </div>
       )}
     </form>
