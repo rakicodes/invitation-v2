@@ -3,6 +3,7 @@ import TextInputWithLabel from "../molecules/TextInputWithLabel";
 import ColorInputWithLabel from "../molecules/ColorInputWithLabel";
 import RadioGroup from "../molecules/RadioGroup";
 import Typography from "../atoms/Typography";
+import SearchGiphy from "./SearchGiphy";
 
 const CreateInvitationForm = ({
   message,
@@ -33,6 +34,18 @@ const CreateInvitationForm = ({
   handleSubmit,
   preview,
   step,
+  messageSearch,
+  handleMessageSearch,
+  handleSubmitMessageSearch,
+  messageSearchData,
+  successMessageSearch,
+  handleSuccessMessageSearch,
+  handleSubmitSuccessMessageSearch,
+  successMessageSearchData,
+  failedMessageSearch,
+  handleFailedMessageSearch,
+  handleSubmitFailedMessageSearch,
+  failedMessageSearchData,
 }) => {
   return (
     <form className="flex flex-col gap-2 h-full" onSubmit={handleSubmit}>
@@ -56,6 +69,12 @@ const CreateInvitationForm = ({
             onChange={handleChangeImage}
             placeholder={preview.messageImage}
           />
+          <SearchGiphy 
+            data={messageSearchData} 
+            search={messageSearch} 
+            handleChange={handleMessageSearch} 
+            handleSubmit={handleSubmitMessageSearch}
+          />
         </>
       )}
       {step === 1 && (
@@ -78,6 +97,12 @@ const CreateInvitationForm = ({
             onChange={handleChangeSuccessImage}
             placeholder={preview.successImage}
           />
+          <SearchGiphy 
+            data={successMessageSearchData} 
+            search={successMessageSearch} 
+            handleChange={handleSuccessMessageSearch} 
+            handleSubmit={handleSubmitSuccessMessageSearch}
+          />
         </>
       )}
       {step === 2 && (
@@ -99,6 +124,12 @@ const CreateInvitationForm = ({
             value={failedImage}
             onChange={handleChangeFailedImage}
             placeholder={preview.failedImage}
+          />
+          <SearchGiphy 
+            data={failedMessageSearchData} 
+            search={failedMessageSearch} 
+            handleChange={handleFailedMessageSearch} 
+            handleSubmit={handleSubmitFailedMessageSearch}
           />
         </>
       )}
