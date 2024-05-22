@@ -2,11 +2,13 @@
 import { useEffect, useState } from "react"
 import InvitationTemplate from "@ui/templates/InvitationTemplate";
 import { useRouter } from "next/navigation"
+import LoadingTemplate from "@ui/templates/LoadingTemplate";
 
 const Page = ({ params }) => {
 	const id = params.id
 	const [data, setData] = useState({})
 	const router = useRouter()
+	const [isLoading, setIsLoading] = useState(true);
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -23,6 +25,7 @@ const Page = ({ params }) => {
 		};
 
 		fetchData();
+		setIsLoading(false)
 	}, [id]);
 
 	const handleNo = async () => {
@@ -50,7 +53,12 @@ const Page = ({ params }) => {
 		});
 		router.push(`/invitation/${id}/success`)
 	}
-	console.log(data)
+	if (isLoading) {
+		return (
+		  <LoadingTemplate />
+		)
+	}
+
 	return (
 		<>
 			<InvitationTemplate

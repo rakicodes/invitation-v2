@@ -7,6 +7,7 @@ import ProfileTemplate from "@ui/templates/ProfileTemplate"
 const Page = () => {
   const router = useRouter()
   const [data, setData] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
   useEffect(() => {
 		if (!getCookie("session")) {
 			router.push('/')
@@ -33,6 +34,7 @@ const Page = () => {
 		};
 
 		fetchData();
+		setIsLoading(false);
 	}, [router]);
 
 	const handleDelete = async (id) => {
@@ -71,7 +73,7 @@ const Page = () => {
 
   return (
     <>
-      <ProfileTemplate data={data} handleDelete={handleDelete} handleCreate={handleCreate} />
+      <ProfileTemplate data={data} handleDelete={handleDelete} handleCreate={handleCreate} isLoading={isLoading}/>
     </>
   )
 }
