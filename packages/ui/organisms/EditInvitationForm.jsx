@@ -3,6 +3,7 @@ import TextInputWithLabel from "../molecules/TextInputWithLabel";
 import ColorInputWithLabel from "../molecules/ColorInputWithLabel";
 import RadioGroup from "../molecules/RadioGroup";
 import Typography from "../atoms/Typography";
+import SearchGiphy from "./SearchGiphy";
 
 const EditInvitationForm = ({
   message,
@@ -32,10 +33,25 @@ const EditInvitationForm = ({
   handleChangeButtonFontColor,
   handleSubmit,
   step,
+  messageSearch,
+  handleMessageSearch,
+  handleSubmitMessageSearch,
+  messageSearchData,
+  handleSearchMessageSelect,
+  successMessageSearch,
+  handleSuccessMessageSearch,
+  handleSubmitSuccessMessageSearch,
+  successMessageSearchData,
+  handleSearchSuccessMessageSelect,
+  failedMessageSearch,
+  handleFailedMessageSearch,
+  handleSubmitFailedMessageSearch,
+  failedMessageSearchData,
+  handleSearchFailedMessageSelect
 }) => {
   return (
     <form
-      className="flex flex-col gap-2 h-full justify-center"
+      className="flex flex-col gap-2 h-full"
       onSubmit={handleSubmit}
     >
       {step === 0 && (
@@ -55,6 +71,13 @@ const EditInvitationForm = ({
             required={true}
             value={image}
             onChange={handleChangeImage}
+          />
+          <SearchGiphy 
+            data={messageSearchData} 
+            search={messageSearch} 
+            handleChange={handleMessageSearch} 
+            handleSubmit={handleSubmitMessageSearch}
+            handleSelectImg={handleSearchMessageSelect}
           />
         </>
       )}
@@ -76,6 +99,13 @@ const EditInvitationForm = ({
             value={successImage}
             onChange={handleChangeSuccessImage}
           />
+          <SearchGiphy 
+            data={successMessageSearchData} 
+            search={successMessageSearch} 
+            handleChange={handleSuccessMessageSearch} 
+            handleSubmit={handleSubmitSuccessMessageSearch}
+            handleSelectImg={handleSearchSuccessMessageSelect}
+          />
         </>
       )}
       {step === 2 && (
@@ -95,6 +125,13 @@ const EditInvitationForm = ({
             required={true}
             value={failedImage}
             onChange={handleChangeFailedImage}
+          />
+          <SearchGiphy 
+            data={failedMessageSearchData} 
+            search={failedMessageSearch} 
+            handleChange={handleFailedMessageSearch} 
+            handleSubmit={handleSubmitFailedMessageSearch}
+            handleSelectImg={handleSearchFailedMessageSelect}
           />
         </>
       )}

@@ -25,6 +25,12 @@ const Page = ({ params }) => {
   const [isLoading, setIsLoading] = useState(true);
 	const router = useRouter();
 	const [step, setStep] = useState(0)
+	const [messageSearch, setMessageSearch] = useState("")
+	const [messageSearchData, setMessageSearchData] = useState([])
+	const [successMessageSearch, setSuccessMessageSearch] = useState("")
+	const [successMessageSearchData, setSuccessMessageSearchData] = useState([])
+	const [failedMessageSearch, setFailedMessageSearch] = useState("")
+	const [failedMessageSearchData, setFailedMessageSearchData] = useState([])  
 
 	useEffect(() => {
 		if (!getCookie("session")) {
@@ -97,6 +103,42 @@ const Page = ({ params }) => {
     router.push('/u/profile')
 	};
 
+	const handleSubmitMessageSearch = async (e) => {
+		e.preventDefault()
+		const res = await fetch(`https://api.giphy.com/v1/stickers/search?api_key=${process.env.NEXT_PUBLIC_GIPHY_KEY}&q=${messageSearch}&limit=6`)
+		const data = await res.json()
+		console.log(data)
+		setMessageSearchData(data.data)
+	  }
+	
+	  const handleSubmitSuccessMessageSearch = async (e) => {
+		e.preventDefault()
+		const res = await fetch(`https://api.giphy.com/v1/stickers/search?api_key=${process.env.NEXT_PUBLIC_GIPHY_KEY}&q=${successMessageSearch}&limit=6`)
+		const data = await res.json()
+		console.log(data)
+		setSuccessMessageSearchData(data.data)
+	  }
+	
+	  const handleSubmitFailedMessageSearch = async (e) => {
+		e.preventDefault()
+		const res = await fetch(`https://api.giphy.com/v1/stickers/search?api_key=${process.env.NEXT_PUBLIC_GIPHY_KEY}&q=${failedMessageSearch}&limit=6`)
+		const data = await res.json()
+		console.log(data)
+		setFailedMessageSearchData(data.data)
+	  }
+	
+	  const handleSearchMessageSelect = (e) => {
+		setImage(e.target.src)
+	  }
+	
+	  const handleSearchSuccessMessageSelect = (e) => {
+		setSuccessImage(e.target.src)
+	  }
+	
+	  const handleSearchFailedMessageSelect = (e) => {
+		setFailedImage(e.target.src)
+	  }
+
   if (isLoading) {
     return (
       <LoadingTemplate />
@@ -136,6 +178,21 @@ const Page = ({ params }) => {
 				handleSubmit={handleSubmit}
 				step={step}
 				handleStep={(x) => setStep(step+x)}		
+				messageSearch={messageSearch}
+				handleMessageSearch={(e) => setMessageSearch(e.target.value)}
+				handleSubmitMessageSearch={handleSubmitMessageSearch}
+				messageSearchData={messageSearchData}
+				handleSearchMessageSelect={handleSearchMessageSelect}
+				successMessageSearch={successMessageSearch}
+				handleSuccessMessageSearch={(e) => setSuccessMessageSearch(e.target.value)}
+				handleSubmitSuccessMessageSearch={handleSubmitSuccessMessageSearch}
+				successMessageSearchData={successMessageSearchData}
+				handleSearchSuccessMessageSelect={handleSearchSuccessMessageSelect}
+				failedMessageSearch={failedMessageSearch}
+				handleFailedMessageSearch={(e) => setFailedMessageSearch(e.target.value)}
+				handleSubmitFailedMessageSearch={handleSubmitFailedMessageSearch}
+				failedMessageSearchData={failedMessageSearchData}
+				handleSearchFailedMessageSelect={handleSearchFailedMessageSelect}		
 			/>
 		</>
 	);
