@@ -12,7 +12,7 @@ const ShareTemplate = ({ id, handleClick }) => {
           <div className="w-2/3">
             <Typography textCenter>
               <Link className="underline" href={`/invitation/${id}`}>
-                http://localhost:3000/invitation/{id}
+                {process.env.NEXT_PUBLIC_CLIENT_URL+"/invitation/"+id}
               </Link>
             </Typography>
           </div>

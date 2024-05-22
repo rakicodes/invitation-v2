@@ -9,12 +9,13 @@ const Page = ({ params }) => {
 	const [data, setData] = useState({})
 	const router = useRouter()
 	const [isLoading, setIsLoading] = useState(true);
+	console.log(process.env.NEXT_PUBLIC_SERVER_URL)
 
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
 				const res = await fetch(
-					`http://localhost:3333/api/invitations/${id}`
+					`${process.env.NEXT_PUBLIC_SERVER_URL}/api/invitations/${id}`
 				);
 				const data = await res.json();
 
@@ -29,7 +30,7 @@ const Page = ({ params }) => {
 	}, [id]);
 
 	const handleNo = async () => {
-		const res = await fetch(`http://localhost:3333/api/invitations/reply/${id}`, {
+		const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/invitations/reply/${id}`, {
 			method: "PUT",
 			headers: {
 				"Content-type": "application/json",
@@ -42,7 +43,7 @@ const Page = ({ params }) => {
 	}
 
 	const handleYes = async () => {
-		const res = await fetch(`http://localhost:3333/api/invitations/reply/${id}`, {
+		const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/invitations/reply/${id}`, {
 			method: "PUT",
 			headers: {
 				"Content-type": "application/json",
