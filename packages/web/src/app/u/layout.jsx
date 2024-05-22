@@ -24,11 +24,11 @@ const Layout = ({ children }) => {
   }
 
   return (
-    <>
+    <div className="min-h-screen flex flex-col">
         <Drawer isLoggedIn={isLoggedIn} isOpen={isOpen} handleOpenMenu={handleOpenMenu}/>
         <Header isLoggedIn={isLoggedIn} handleOpenMenu={handleOpenMenu} handleIsLoggedIn={handleIsLoggedIn}/>
         {children}
-    </>
+    </div>
   )
 }
 
