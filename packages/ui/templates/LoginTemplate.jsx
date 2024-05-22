@@ -31,7 +31,7 @@ const LoginTemplate = ({
         />
         <Typography textCenter={true} fontSize="sm">
           Don't have an account?{" "}
-          <Link href="/signup" className="text-pink hover:underline">
+          <Link href="/u/signup" className="text-pink hover:underline">
             Sign up
           </Link>
         </Typography>

@@ -35,7 +35,7 @@ const SignUpTemplate = ({
         />
         <Typography textCenter={true} fontSize="sm">
           Already have an account?{" "}
-          <Link href="/login" className="text-pink hover:underline">
+          <Link href="/u/login" className="text-pink hover:underline">
             Log in
           </Link>
         </Typography>
