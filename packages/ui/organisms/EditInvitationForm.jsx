@@ -47,13 +47,10 @@ const EditInvitationForm = ({
   handleFailedMessageSearch,
   handleSubmitFailedMessageSearch,
   failedMessageSearchData,
-  handleSearchFailedMessageSelect
+  handleSearchFailedMessageSelect,
 }) => {
   return (
-    <form
-      className="flex flex-col gap-2 h-full"
-      onSubmit={handleSubmit}
-    >
+    <form className="flex flex-col gap-2 h-full" onSubmit={handleSubmit}>
       {step === 0 && (
         <>
           <TextInputWithLabel
@@ -72,10 +69,10 @@ const EditInvitationForm = ({
             value={image}
             onChange={handleChangeImage}
           />
-          <SearchGiphy 
-            data={messageSearchData} 
-            search={messageSearch} 
-            handleChange={handleMessageSearch} 
+          <SearchGiphy
+            data={messageSearchData}
+            search={messageSearch}
+            handleChange={handleMessageSearch}
             handleSubmit={handleSubmitMessageSearch}
             handleSelectImg={handleSearchMessageSelect}
           />
@@ -99,10 +96,10 @@ const EditInvitationForm = ({
             value={successImage}
             onChange={handleChangeSuccessImage}
           />
-          <SearchGiphy 
-            data={successMessageSearchData} 
-            search={successMessageSearch} 
-            handleChange={handleSuccessMessageSearch} 
+          <SearchGiphy
+            data={successMessageSearchData}
+            search={successMessageSearch}
+            handleChange={handleSuccessMessageSearch}
             handleSubmit={handleSubmitSuccessMessageSearch}
             handleSelectImg={handleSearchSuccessMessageSelect}
           />
@@ -126,10 +123,10 @@ const EditInvitationForm = ({
             value={failedImage}
             onChange={handleChangeFailedImage}
           />
-          <SearchGiphy 
-            data={failedMessageSearchData} 
-            search={failedMessageSearch} 
-            handleChange={handleFailedMessageSearch} 
+          <SearchGiphy
+            data={failedMessageSearchData}
+            search={failedMessageSearch}
+            handleChange={handleFailedMessageSearch}
             handleSubmit={handleSubmitFailedMessageSearch}
             handleSelectImg={handleSearchFailedMessageSelect}
           />

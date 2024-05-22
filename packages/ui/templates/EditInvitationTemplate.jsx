@@ -48,7 +48,7 @@ const EditInvitationTemplate = ({
   handleFailedMessageSearch,
   handleSubmitFailedMessageSearch,
   failedMessageSearchData,
-  handleSearchFailedMessageSelect
+  handleSearchFailedMessageSelect,
 }) => {
   return (
     <div className="flex items-center justify-center bg-white">
@@ -107,7 +107,6 @@ const EditInvitationTemplate = ({
             handleSubmitFailedMessageSearch={handleSubmitFailedMessageSearch}
             failedMessageSearchData={failedMessageSearchData}
             handleSearchFailedMessageSelect={handleSearchFailedMessageSelect}
-
           />
         </div>
         <div className="flex w-full grow self-stretch sm:w-1/3 min-h-[488px]">

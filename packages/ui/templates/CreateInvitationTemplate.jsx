@@ -48,7 +48,7 @@ const CreateInvitationTemplate = ({
   handleFailedMessageSearch,
   handleSubmitFailedMessageSearch,
   failedMessageSearchData,
-  handleSearchFailedMessageSelect
+  handleSearchFailedMessageSelect,
 }) => {
   return (
     <div className="flex items-center justify-center bg-white w-screen">

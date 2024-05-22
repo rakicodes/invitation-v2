@@ -48,7 +48,7 @@ const CreateInvitationForm = ({
   handleFailedMessageSearch,
   handleSubmitFailedMessageSearch,
   failedMessageSearchData,
-  handleSearchFailedMessageSelect
+  handleSearchFailedMessageSelect,
 }) => {
   return (
     <form className="flex flex-col gap-2 h-full" onSubmit={handleSubmit}>
@@ -72,10 +72,10 @@ const CreateInvitationForm = ({
             onChange={handleChangeImage}
             placeholder={preview.messageImage}
           />
-          <SearchGiphy 
-            data={messageSearchData} 
-            search={messageSearch} 
-            handleChange={handleMessageSearch} 
+          <SearchGiphy
+            data={messageSearchData}
+            search={messageSearch}
+            handleChange={handleMessageSearch}
             handleSubmit={handleSubmitMessageSearch}
             handleSelectImg={handleSearchMessageSelect}
           />
@@ -101,10 +101,10 @@ const CreateInvitationForm = ({
             onChange={handleChangeSuccessImage}
             placeholder={preview.successImage}
           />
-          <SearchGiphy 
-            data={successMessageSearchData} 
-            search={successMessageSearch} 
-            handleChange={handleSuccessMessageSearch} 
+          <SearchGiphy
+            data={successMessageSearchData}
+            search={successMessageSearch}
+            handleChange={handleSuccessMessageSearch}
             handleSubmit={handleSubmitSuccessMessageSearch}
             handleSelectImg={handleSearchSuccessMessageSelect}
           />
@@ -130,10 +130,10 @@ const CreateInvitationForm = ({
             onChange={handleChangeFailedImage}
             placeholder={preview.failedImage}
           />
-          <SearchGiphy 
-            data={failedMessageSearchData} 
-            search={failedMessageSearch} 
-            handleChange={handleFailedMessageSearch} 
+          <SearchGiphy
+            data={failedMessageSearchData}
+            search={failedMessageSearch}
+            handleChange={handleFailedMessageSearch}
             handleSubmit={handleSubmitFailedMessageSearch}
             handleSelectImg={handleSearchFailedMessageSelect}
           />
