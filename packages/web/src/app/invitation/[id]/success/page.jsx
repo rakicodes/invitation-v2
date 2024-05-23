@@ -2,7 +2,7 @@ import ResponseTemplate from "@ui/templates/ResponseTemplate";
 
 const page = async ({ params }) => {
 	const id = params.id;
-	const res = await fetch(`http://localhost:3333/api/invitations/${id}`);
+	const res = await fetch(`${process.env.SERVER_URL}/api/invitations/${id}`);
 	const data = await res.json();
 
 	return (

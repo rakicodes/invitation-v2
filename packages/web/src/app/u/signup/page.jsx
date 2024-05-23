@@ -19,7 +19,7 @@ const Page = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await fetch('http://localhost:3333/api/auth/register', {
+    const res = await fetch(`${process.env.SERVER_URL}/api/auth/register`, {
       method: 'POST',
       headers: {
         'Content-type': 'application/json',
