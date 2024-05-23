@@ -42,7 +42,7 @@ const Page = ({ params }) => {
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
-				const res = await fetch(`${process.env.SERVER_URL}/api/invitations/${id}`, {
+				const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/invitations/${id}`, {
 					headers: {
 						Authorization: `Bearer ${JSON.parse(getCookie("session")).token}`,
 					},
@@ -79,7 +79,7 @@ const Page = ({ params }) => {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		const res = await fetch(`${process.env.SERVER_URL}/api/invitations/${id}`, {
+		const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/invitations/${id}`, {
 			method: "PUT",
 			headers: {
 				"Content-type": "application/json",
